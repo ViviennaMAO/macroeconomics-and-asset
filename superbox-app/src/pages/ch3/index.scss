@@ -1,0 +1,14 @@
+.ch3 {
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+.coming-soon {
+  margin: 20px 16px;
+  padding: 24px;
+  text-align: center;
+  background: #141927;
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,0.1);
+  .coming-text { font-size: 16px; display: block; margin-bottom: 4px; }
+  .coming-sub { font-size: 12px; color: #5a6478; display: block; }
+}

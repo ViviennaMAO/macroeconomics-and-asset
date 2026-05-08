@@ -1,0 +1,43 @@
+// Ch1 — 美国经济 NPV 模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch1-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+// Header accent
+.ch1-header {
+  .page-title {
+    letter-spacing: -0.3px;
+  }
+}
+
+// Output value colors
+.output-big--pos {
+  color: #4cd964;
+}
+
+.output-big--neg {
+  color: #ff4757;
+}
+
+// Secondary output block (right side of output-row)
+.output-secondary {
+  text-align: right;
+}
+
+.output-secondary-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+
+  &.pos {
+    color: #4cd964;
+  }
+
+  &.neg {
+    color: #ff4757;
+  }
+}

@@ -1,0 +1,54 @@
+// Ch6 — 美元双因子模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch6-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.ch6-val--strong {
+  color: #4cd964;
+}
+
+.ch6-val--weak {
+  color: #ff4757;
+}
+
+.ch6-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 4px;
+
+  &.ch6-status--strong {
+    background: rgba(76, 217, 100, 0.15);
+    color: #4cd964;
+  }
+
+  &.ch6-status--weak {
+    background: rgba(255, 71, 87, 0.15);
+    color: #ff4757;
+  }
+}
+
+.ch6-secondary {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ch6-factor-block {
+  &--bottom {
+    margin-top: 12px;
+  }
+}
+
+.ch6-factor-value {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}

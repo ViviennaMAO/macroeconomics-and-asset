@@ -1,0 +1,47 @@
+.snapshot-bar {
+  width: 100%;
+  white-space: nowrap;
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border-bottom: 2px solid transparent;
+    background: #141927;
+    cursor: pointer;
+
+    &--default {
+      border-bottom-color: #5a6478;
+    }
+
+    &--primary {
+      border-bottom-color: #4a9eff;
+    }
+
+    &--danger {
+      border-bottom-color: #ff4757;
+    }
+
+    &--active {
+      background: #1a2035;
+
+      &.snapshot-bar__btn--default {
+        border-bottom-color: #8b95a8;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    color: #e8ecf4;
+    line-height: 1.4;
+  }
+}

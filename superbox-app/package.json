@@ -1,0 +1,42 @@
+{
+  "name": "superbox-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "dev:weapp": "taro build --type weapp --watch",
+    "build:h5": "taro build --type h5",
+    "dev:h5": "taro build --type h5 --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@tarojs/cli": "^4.0.9",
+    "@tarojs/components": "^4.0.9",
+    "@tarojs/helper": "^4.0.9",
+    "@tarojs/plugin-framework-react": "^4.0.9",
+    "@tarojs/plugin-platform-h5": "^4.0.9",
+    "@tarojs/plugin-platform-weapp": "^4.0.9",
+    "@tarojs/react": "^4.0.9",
+    "@tarojs/runtime": "^4.0.9",
+    "@tarojs/taro": "^4.0.9",
+    "@tarojs/webpack5-runner": "^4.0.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
+    "@babel/runtime": "^7.26.0",
+    "@types/react": "^18.3.18",
+    "core-js": "^3.40.0",
+    "sass": "^1.83.4",
+    "typescript": "^5.7.3"
+  }
+}

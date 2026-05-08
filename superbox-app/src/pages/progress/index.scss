@@ -1,0 +1,311 @@
+// Progress page — 学习进度
+$bg: #0a0e1a;
+$card: #141927;
+$text: #e8ecf4;
+$secondary: #8b95a8;
+$dim: #5a6478;
+$amber: #f5a623;
+$blue: #4a9eff;
+$green: #4cd964;
+$red: #ff4757;
+$purple: #a855f7;
+$border: rgba(255,255,255,0.06);
+$radius: 12px;
+
+.progress-page {
+  min-height: 100vh;
+  background: $bg;
+}
+
+.progress-loading {
+  padding: 80px 20px;
+  text-align: center;
+
+  &__text {
+    font-size: 14px;
+    color: $dim;
+  }
+}
+
+// Overview card
+.progress-overview {
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(168, 85, 247, 0.15));
+    border: 2px solid rgba(74, 158, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__pct {
+    font-size: 22px;
+    font-weight: 800;
+    color: $blue;
+    display: block;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 11px;
+    color: $secondary;
+  }
+
+  &__stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__stat {
+    font-size: 14px;
+    display: block;
+  }
+
+  &__stat-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: $text;
+  }
+
+  &__stat-unit {
+    font-size: 13px;
+    color: $secondary;
+  }
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, $blue, $purple);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-bar-label {
+  font-size: 12px;
+  color: $dim;
+  display: block;
+}
+
+// Streak panel
+.streak-panel {
+  .streak-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .streak-emoji {
+    font-size: 24px;
+  }
+
+  .streak-days {
+    font-size: 36px;
+    font-weight: 800;
+    color: $amber;
+  }
+
+  .streak-unit {
+    font-size: 14px;
+    color: $secondary;
+  }
+
+  .streak-last {
+    font-size: 12px;
+    color: $dim;
+    display: block;
+  }
+
+  .streak-cta {
+    font-size: 13px;
+    color: $blue;
+    display: block;
+    margin-top: 8px;
+  }
+}
+
+// Review items
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid $border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  &__emoji {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  &__level {
+    font-size: 11px;
+    color: $dim;
+    display: block;
+  }
+
+  &__cta {
+    font-size: 12px;
+    color: $amber;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+}
+
+.due-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+
+  &__icon {
+    font-size: 32px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $secondary;
+    text-align: center;
+    line-height: 1.5;
+    display: block;
+  }
+}
+
+// Chapter stats
+.ch-stat-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid $border;
+  gap: 8px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--locked {
+    opacity: 0.45;
+  }
+
+  &__left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+  }
+
+  &__emoji {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__unstarted {
+    font-size: 12px;
+    color: $dim;
+    display: block;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+}
+
+.ch-stat-bar {
+  font-size: 11px;
+  color: $secondary;
+  display: block;
+  font-variant-numeric: tabular-nums;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.ch-stat-complete {
+  font-size: 11px;
+  color: $green;
+  display: block;
+}
+
+.ch-stat-btn {
+  padding: 4px 10px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 8px;
+  text-align: center;
+
+  &:active {
+    background: rgba(74, 158, 255, 0.2);
+  }
+
+  &--ghost {
+    background: rgba(255,255,255,0.04);
+    border-color: $border;
+  }
+
+  &__text {
+    font-size: 12px;
+    color: $blue;
+  }
+}

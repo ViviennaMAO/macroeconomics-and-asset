@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "macro-asset-interactive",
+  "description": "全球宏观经济分析与大类资产研究 · 互动学习",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "compileHotReLoad": false,
+    "postcss": false,
+    "minified": false,
+    "bundle": false
+  },
+  "compileType": "miniprogram"
+}

@@ -1,0 +1,39 @@
+// Ch9 — 石油项目WACC模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch9-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.ch9-val--pos {
+  color: #4cd964;
+}
+
+.ch9-val--neg {
+  color: #ff4757;
+}
+
+.ch9-secondary {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ch9-metric-block {
+  &--bottom {
+    margin-top: 12px;
+  }
+}
+
+.ch9-metric-value {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+
+.ch9-breakeven {
+  color: #f5a623;
+}

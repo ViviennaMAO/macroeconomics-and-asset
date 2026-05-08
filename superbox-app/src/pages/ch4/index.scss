@@ -1,0 +1,26 @@
+// Ch4 — 新兴市场IRR模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch4-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.ch4-val--pos {
+  color: #4cd964;
+}
+
+.ch4-val--neg {
+  color: #ff4757;
+}
+
+.ch4-secondary {
+  text-align: right;
+}
+
+.ch4-secondary-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}

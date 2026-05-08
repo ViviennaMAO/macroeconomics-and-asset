@@ -1,0 +1,166 @@
+// Paths page — 学习路径
+$bg: #0a0e1a;
+$card: #141927;
+$panel: #1a2035;
+$text: #e8ecf4;
+$secondary: #8b95a8;
+$dim: #5a6478;
+$amber: #f5a623;
+$blue: #4a9eff;
+$border: rgba(255,255,255,0.06);
+$radius: 12px;
+
+.paths-page {
+  min-height: 100vh;
+  background: $bg;
+}
+
+.path-card {
+  margin: 10px 16px;
+  padding: 16px;
+  background: $card;
+  border-radius: $radius;
+  border: 1px solid $border;
+  transition: border-color 0.2s;
+
+  &:active {
+    border-color: rgba(74, 158, 255, 0.3);
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__emoji {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text;
+    display: block;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  &__tag {
+    font-size: 12px;
+    color: $blue;
+    display: block;
+  }
+
+  &__chevron {
+    font-size: 11px;
+    color: $dim;
+    padding-top: 4px;
+  }
+}
+
+.path-hook {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(245, 166, 35, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(245, 166, 35, 0.15);
+
+  &__icon {
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    font-size: 13px;
+    color: $amber;
+    line-height: 1.5;
+  }
+}
+
+.path-meta {
+  margin-top: 10px;
+}
+
+.path-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 14px;
+
+  &--on {
+    color: $amber;
+  }
+
+  &--off {
+    color: $dim;
+  }
+}
+
+.path-route {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid $border;
+
+  &__label {
+    font-size: 11px;
+    color: $dim;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__arrow {
+    font-size: 12px;
+    color: $dim;
+  }
+
+  &__hint {
+    font-size: 11px;
+    color: $dim;
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+.ch-pill {
+  padding: 5px 10px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 20px;
+
+  &:active {
+    background: rgba(74, 158, 255, 0.2);
+  }
+
+  &__text {
+    font-size: 12px;
+    color: #4a9eff;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,141 @@
+// News page — 今日市场
+$bg: #0a0e1a;
+$card: #141927;
+$text: #e8ecf4;
+$secondary: #8b95a8;
+$dim: #5a6478;
+$amber: #f5a623;
+$blue: #4a9eff;
+$border: rgba(255,255,255,0.06);
+$radius: 12px;
+
+.news-page {
+  min-height: 100vh;
+  background: $bg;
+}
+
+.news-date-bar {
+  margin: 0 16px 12px;
+  padding: 7px 12px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border: 1px solid $border;
+
+  &__text {
+    font-size: 11px;
+    color: $dim;
+  }
+}
+
+.news-card {
+  margin: 10px 16px;
+  padding: 16px;
+  background: $card;
+  border-radius: $radius;
+  border: 1px solid $border;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__rank-emoji {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__rank {
+    font-size: 11px;
+    color: $dim;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__emoji {
+    font-size: 18px;
+  }
+
+  &__category {
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid;
+    background: transparent;
+  }
+
+  &__category-text {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $text;
+    display: block;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  &__summary {
+    font-size: 13px;
+    color: $secondary;
+    line-height: 1.7;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  &__chapters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__ch-label {
+    font-size: 11px;
+    color: $dim;
+    flex-shrink: 0;
+  }
+
+  &__ch-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+.news-ch-pill {
+  padding: 4px 10px;
+  background: rgba(74, 158, 255, 0.08);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 12px;
+
+  &:active {
+    background: rgba(74, 158, 255, 0.18);
+  }
+
+  &__text {
+    font-size: 12px;
+    color: $blue;
+    font-weight: 500;
+  }
+}
+
+.news-disclaimer {
+  margin: 16px 16px 0;
+  padding: 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid $border;
+
+  &__text {
+    font-size: 11px;
+    color: $dim;
+    line-height: 1.5;
+    display: block;
+    text-align: center;
+  }
+}

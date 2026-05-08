@@ -1,0 +1,108 @@
+// Ch7 — 美国国债定价模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch7-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+// ─── Output section overrides ────────────────────────────────────────────────
+
+.ch7-output {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// Primary price display
+.ch7-output-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+}
+
+.ch7-price-big {
+  font-size: 40px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+  line-height: 1.1;
+
+  &.ch7-price--premium {
+    color: #4cd964;
+  }
+  &.ch7-price--discount {
+    color: #ff4757;
+  }
+  &.ch7-price--par {
+    color: #a8b3cf;
+  }
+}
+
+// Premium / discount badge
+.ch7-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 3px 12px;
+
+  &.ch7-badge--premium {
+    background: rgba(76, 217, 100, 0.15);
+    border: 1px solid rgba(76, 217, 100, 0.35);
+  }
+  &.ch7-badge--discount {
+    background: rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 71, 87, 0.35);
+  }
+  &.ch7-badge--par {
+    background: rgba(168, 179, 207, 0.12);
+    border: 1px solid rgba(168, 179, 207, 0.25);
+  }
+}
+
+.ch7-badge-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  .ch7-badge--premium & { color: #4cd964; }
+  .ch7-badge--discount & { color: #ff4757; }
+  .ch7-badge--par & { color: #a8b3cf; }
+}
+
+// Secondary metrics row (duration + price change estimate)
+.ch7-output-secondary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 12px;
+}
+
+.ch7-secondary-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.ch7-secondary-block--right {
+    text-align: right;
+  }
+}
+
+.ch7-secondary-value {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #a8b3cf;
+
+  &.ch7-secondary--neg { color: #ff4757; }
+  &.ch7-secondary--pos { color: #4cd964; }
+}
+
+.ch7-unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a6480;
+}

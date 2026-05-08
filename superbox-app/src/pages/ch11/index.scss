@@ -1,0 +1,68 @@
+// Ch11 — 泰勒规则模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch11-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.ch11-val--blue {
+  color: #4a9eff;
+}
+
+.ch11-secondary {
+  text-align: right;
+}
+
+.ch11-fed-actual {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #8b95a8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ch11-gap {
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  display: block;
+
+  &--large {
+    color: #ff4757;
+  }
+
+  &--small {
+    color: #4cd964;
+  }
+}
+
+.ch11-breakdown {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ch11-formula-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.ch11-formula-term {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #e8ecf4;
+  background: rgba(74, 158, 255, 0.08);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+
+.ch11-formula-sep {
+  font-size: 12px;
+  color: #5a6478;
+}

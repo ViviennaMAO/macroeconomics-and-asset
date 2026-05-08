@@ -1,0 +1,66 @@
+// Ch10 — 黄金多因子模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch10-page {
+  min-height: 100vh;
+  background: #0a0e1a;
+}
+
+.ch10-val--gold {
+  color: #f5a623;
+}
+
+.ch10-val--pos {
+  color: #4cd964;
+}
+
+.ch10-val--neg {
+  color: #ff4757;
+}
+
+.ch10-secondary {
+  text-align: right;
+}
+
+.ch10-decomp {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ch10-factor-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.ch10-factor-item {
+  flex: 1;
+  text-align: center;
+}
+
+.ch10-factor-label {
+  font-size: 11px;
+  color: #8b95a8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ch10-factor-val {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+
+.ch10-base-row {
+  margin-top: 4px;
+}
+
+.ch10-base-label {
+  font-size: 12px;
+  color: #5a6478;
+  display: block;
+  text-align: center;
+}

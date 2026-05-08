@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.taro/
+.swc/
+.DS_Store
+*.log
+.env
+.env.local
+.cache/
+coverage/
+*.tsbuildinfo

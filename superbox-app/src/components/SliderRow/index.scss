@@ -1,0 +1,29 @@
+.slider-row {
+  padding: 12px 16px;
+  background: #141927;
+  border-radius: 8px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #e8ecf4;
+  }
+
+  &__value {
+    font-size: 14px;
+    color: #4a9eff;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+  }
+
+  &__slider {
+    width: 100%;
+  }
+}
