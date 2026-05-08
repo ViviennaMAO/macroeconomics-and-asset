@@ -47,6 +47,14 @@ const SERIES = [
   ['DTWEXBGS',          'lin', '美元指数(广义)',       6],
   // 黄金
   ['GOLDAMGBD228NLBM',  'lin', '黄金现货价格($/oz)', 10],
+  // Ch1: 美国经济 — 领先/同步指标
+  ['USSLIND',           'lin', '州领先指标',           1],
+  ['ICSA',              'lin', '初请失业金人数',        1],
+  ['INDPRO',            'pc1', '工业生产指数同比',      1],
+  ['T10Y3M',            'lin', '10年-3月利差',          1],
+  ['NFCI',              'lin', 'Fed金融压力指数',        1],
+  ['RSAFS',             'pc1', '零售销售同比',          1],
+  ['PAYEMS',            'pc1', '非农就业同比',          1],
 ]
 
 async function fetchSeries(id, units) {

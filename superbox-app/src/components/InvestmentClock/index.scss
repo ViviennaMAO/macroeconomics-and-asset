@@ -1,0 +1,160 @@
+.investment-clock {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+
+  &__axis-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 24px;
+    margin-bottom: 4px;
+    gap: 0;
+  }
+
+  &__axis-spacer {
+    width: 24px;
+    flex-shrink: 0;
+  }
+
+  &__axis-label {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    color: #5a6478;
+    line-height: 1.4;
+
+    &--vert {
+      flex: 1;
+      text-align: center;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+      color: #5a6478;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  &__axis-col {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    flex-shrink: 0;
+    justify-content: space-around;
+  }
+
+  &__grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    aspect-ratio: 1;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    background: #141927;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #1e2a40;
+  }
+
+  &__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__stat-label {
+    font-size: 10px;
+    color: #5a6478;
+    line-height: 1.3;
+  }
+
+  &__stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+
+    &--up {
+      color: #4cd964;
+    }
+
+    &--down {
+      color: #ff4757;
+    }
+
+    &--amber {
+      color: #f5a623;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 32px;
+    background: #1e2a40;
+    flex-shrink: 0;
+  }
+}
+
+.clock-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 8px;
+  background: #141927;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  gap: 3px;
+  min-height: 90px;
+
+  &--active {
+    border-color: #f5a623;
+    background: rgba(245, 166, 35, 0.07);
+    box-shadow: 0 0 12px rgba(245, 166, 35, 0.2);
+  }
+
+  &__badge {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-size: 9px;
+    color: #f5a623;
+    background: rgba(245, 166, 35, 0.15);
+    padding: 1px 5px;
+    border-radius: 4px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  &__emoji {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+    line-height: 1.3;
+  }
+
+  &__asset {
+    font-size: 11px;
+    color: #5a6478;
+    line-height: 1.3;
+  }
+}

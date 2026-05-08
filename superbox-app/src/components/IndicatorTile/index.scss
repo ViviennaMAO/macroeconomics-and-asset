@@ -1,0 +1,67 @@
+.indicator-tile {
+  width: 150px;
+  min-height: 100px;
+  background: #141927;
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid #1e2a40;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__emoji {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  &__name {
+    font-size: 11px;
+    color: #5a6478;
+    line-height: 1.3;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__value-row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: 2px;
+  }
+
+  &__value {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__trend {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__hint {
+    font-size: 10px;
+    color: #5a6478;
+    line-height: 1.3;
+  }
+
+  &__spark {
+    display: block;
+    width: 130px;
+    height: 20px;
+    margin-top: 4px;
+  }
+}

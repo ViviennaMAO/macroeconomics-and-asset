@@ -8,9 +8,11 @@ import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
 import LiveData from '../../components/LiveData'
+import MiniChart from '../../components/MiniChart'
 import { getSeries } from '../../utils/fred'
 import type { FredSnapshot } from '../../data/fred-baseline'
 import { markOpened, markPredicted } from '../../utils/progress'
+import { YIELD_CURVE_HISTORY } from '../../data/recession-indicators'
 import './index.scss'
 
 type ModalState =
@@ -137,6 +139,27 @@ export default function Ch7Page() {
           }
         }}
       />
+
+      {/* Yield Curve History Chart */}
+      <View className='section'>
+        <Text className='section-title'>📉 收益率曲线 60 月历史</Text>
+        <MiniChart
+          id='ch7-yc-chart'
+          type='line'
+          data={YIELD_CURVE_HISTORY.map(d => ({ label: d.date.slice(2, 7), value: d.spread }))}
+          title='10年-3月利差 (%)'
+          threshold={{ value: 0, label: '倒挂线', color: '#ff4757' }}
+          showZeroLine
+          color='#4a9eff'
+          yAxisFormat={(v) => v.toFixed(2)}
+        />
+        <View className='ch7-chart-note'>
+          <Text className='ch7-chart-note-text'>
+            历史规律：曲线倒挂后 12-18 月通常衰退。**本轮例外**：2022.07 倒挂，至今 800+ 天，无衰退。
+            历史最长记录(2006-07: 360 天 → 2008 GFC)。"狼来了" 还是 "这次不一样"？
+          </Text>
+        </View>
+      </View>
 
       {/* Slider Inputs */}
       <View className='panel'>

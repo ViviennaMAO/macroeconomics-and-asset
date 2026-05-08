@@ -1,28 +1,310 @@
-// Ch1 — 美国经济 NPV 模拟器
+// Ch1 — 美国经济分析框架
 // Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
 
+// ─── Variables (mirror app.scss tokens) ──────────────────────────────────────
+$bg-primary:   #0a0e1a;
+$bg-card:      #141927;
+$bg-panel:     #1a2035;
+$text-primary: #e8ecf4;
+$text-secondary: #8b95a8;
+$text-dim:     #5a6478;
+$accent-blue:  #4a9eff;
+$accent-amber: #f5a623;
+$accent-green: #4cd964;
+$accent-red:   #ff4757;
+$accent-purple:#a855f7;
+$border-subtle: rgba(255, 255, 255, 0.06);
+$radius-sm:    8px;
+$radius-md:    12px;
+$radius-lg:    16px;
+
+// ─── Page Shell ──────────────────────────────────────────────────────────────
 .ch1-page {
   min-height: 100vh;
-  background: #0a0e1a;
+  background: $bg-primary;
 }
 
-// Header accent
+// ─── Hero Header ─────────────────────────────────────────────────────────────
 .ch1-header {
+  background: linear-gradient(160deg, #0d1424 0%, #111828 100%);
+  border-bottom: 1px solid $border-subtle;
+  padding-bottom: 16px;
+
   .page-title {
     letter-spacing: -0.3px;
   }
+
+  &__subtitle {
+    display: block;
+    font-size: 11px;
+    color: $text-dim;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
 }
 
-// Output value colors
-.output-big--pos {
-  color: #4cd964;
+// ─── Section Wrapper ─────────────────────────────────────────────────────────
+.section {
+  margin-top: 8px;
+  padding: 0 0 4px;
 }
 
-.output-big--neg {
-  color: #ff4757;
+.section-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 16px 16px 6px;
+  letter-spacing: -0.1px;
 }
 
-// Secondary output block (right side of output-row)
+.section-subtitle {
+  display: block;
+  font-size: 12px;
+  color: $text-secondary;
+  margin: 0 16px 10px;
+  line-height: 1.5;
+}
+
+// ─── RecessionMeter Panel ────────────────────────────────────────────────────
+.ch1-meter-panel {
+  overflow: hidden;
+}
+
+.ch1-meter-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ch1-meter-aside {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+
+  &__label {
+    display: block;
+    font-size: 11px;
+    color: $text-dim;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__rating {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+
+  &__note {
+    margin-top: 6px;
+    padding: 8px 10px;
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.18);
+    border-radius: $radius-sm;
+  }
+
+  &__note-text {
+    display: block;
+    font-size: 11px;
+    color: $accent-amber;
+    line-height: 1.5;
+  }
+}
+
+.rating--low  { color: $accent-green; }
+.rating--mid  { color: $accent-amber; }
+.rating--high { color: $accent-red;   }
+
+// ─── Indicator Grid ──────────────────────────────────────────────────────────
+.indicator-grid {
+  padding: 0 16px;
+
+  &--2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  &--1col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+// ─── Charts ──────────────────────────────────────────────────────────────────
+.ch1-chart-panel {
+  overflow: hidden;
+  padding: 12px 12px 10px;
+}
+
+.ch1-chart-note {
+  margin-top: 8px;
+  padding: 8px 4px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+
+  &__text {
+    font-size: 12px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+
+  &__highlight {
+    font-size: 12px;
+    font-weight: 700;
+    color: $accent-amber;
+  }
+}
+
+// ─── Inventory Cycle ─────────────────────────────────────────────────────────
+.inventory-grid {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inventory-card {
+  padding: 14px 16px;
+  background: $bg-card;
+  border-radius: $radius-md;
+  border: 1px solid $border-subtle;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &--active {
+    border-color: rgba(245, 166, 35, 0.45);
+    box-shadow: 0 0 16px rgba(245, 166, 35, 0.10);
+    background: linear-gradient(135deg, #1e1e0f 0%, $bg-card 100%);
+  }
+
+  &__badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    padding: 2px 8px;
+    background: rgba(245, 166, 35, 0.18);
+    border: 1px solid rgba(245, 166, 35, 0.35);
+    border-radius: 20px;
+  }
+
+  &__badge-text {
+    font-size: 10px;
+    color: $accent-amber;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  &__step {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: $text-dim;
+    flex-shrink: 0;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &__phase {
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: $text-secondary;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  &__assets {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__asset-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  &__asset-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    flex-shrink: 0;
+    padding-top: 1px;
+
+    &--up   { color: $accent-green; }
+    &--down { color: $accent-red;   }
+  }
+
+  &__asset-list {
+    font-size: 11px;
+    color: $text-dim;
+    line-height: 1.5;
+  }
+}
+
+// ─── Merrill Clock Note ───────────────────────────────────────────────────────
+.ch1-clock-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(76, 217, 100, 0.06);
+  border: 1px solid rgba(76, 217, 100, 0.15);
+  border-radius: $radius-sm;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+
+  &__text {
+    font-size: 12px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+
+  &__highlight {
+    font-size: 12px;
+    font-weight: 700;
+    color: $accent-green;
+  }
+}
+
+// ─── NPV Simulator (original styles, kept) ───────────────────────────────────
+.output-big--pos { color: $accent-green; }
+.output-big--neg { color: $accent-red;   }
+
 .output-secondary {
   text-align: right;
 }
@@ -33,11 +315,101 @@
   font-variant-numeric: tabular-nums;
   display: block;
 
-  &.pos {
-    color: #4cd964;
+  &.pos { color: $accent-green; }
+  &.neg { color: $accent-red;   }
+}
+
+// ─── Recession History Table ──────────────────────────────────────────────────
+.recession-table {
+  margin: 0 16px;
+  background: $bg-card;
+  border-radius: $radius-md;
+  border: 1px solid $border-subtle;
+  overflow: hidden;
+}
+
+.recession-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid $border-subtle;
+
+  &:last-child {
+    border-bottom: none;
   }
 
-  &.neg {
-    color: #ff4757;
+  &--header {
+    background: rgba(255, 255, 255, 0.03);
+
+    .recession-cell {
+      font-size: 10px;
+      color: $text-dim;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-weight: 600;
+      padding: 8px 10px;
+    }
   }
+}
+
+.recession-cell {
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &--period {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &--dur {
+    width: 44px;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: $text-secondary;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--gdp {
+    width: 56px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &--unemp {
+    width: 52px;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: $text-secondary;
+    text-align: right;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 12px;
+  }
+}
+
+.recession-val--neg {
+  color: $accent-red;
+}
+
+.recession-period {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 2px;
+}
+
+.recession-trigger {
+  display: block;
+  font-size: 11px;
+  color: $text-secondary;
+  line-height: 1.4;
 }

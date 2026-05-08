@@ -8,10 +8,89 @@ import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
 import LiveData from '../../components/LiveData'
+import MiniChart from '../../components/MiniChart'
 import { getSeries } from '../../utils/fred'
 import type { FredSnapshot } from '../../data/fred-baseline'
 import { markOpened, markPredicted } from '../../utils/progress'
 import './index.scss'
+
+const GOLD_PRICE_HISTORY: { date: string; price: number }[] = [
+  { date: '2022-01', price: 1815 },
+  { date: '2022-02', price: 1900 },
+  { date: '2022-03', price: 1950 },
+  { date: '2022-04', price: 1930 },
+  { date: '2022-05', price: 1850 },
+  { date: '2022-06', price: 1820 },
+  { date: '2022-07', price: 1730 },
+  { date: '2022-08', price: 1760 },
+  { date: '2022-09', price: 1650 },
+  { date: '2022-10', price: 1640 },
+  { date: '2022-11', price: 1660 },
+  { date: '2022-12', price: 1820 },
+  { date: '2023-01', price: 1930 },
+  { date: '2023-02', price: 1850 },
+  { date: '2023-03', price: 1980 },
+  { date: '2023-04', price: 2010 },
+  { date: '2023-05', price: 1970 },
+  { date: '2023-06', price: 1920 },
+  { date: '2023-07', price: 1960 },
+  { date: '2023-08', price: 1940 },
+  { date: '2023-09', price: 1880 },
+  { date: '2023-10', price: 1850 },
+  { date: '2023-11', price: 1980 },
+  { date: '2023-12', price: 2060 },
+  { date: '2024-01', price: 2040 },
+  { date: '2024-02', price: 2050 },
+  { date: '2024-03', price: 2160 },
+  { date: '2024-04', price: 2340 },
+  { date: '2024-05', price: 2350 },
+  { date: '2024-06', price: 2330 },
+  { date: '2024-07', price: 2430 },
+  { date: '2024-08', price: 2500 },
+  { date: '2024-09', price: 2630 },
+  { date: '2024-10', price: 2730 },
+  { date: '2024-11', price: 2650 },
+  { date: '2024-12', price: 2630 },
+]
+
+const REAL_RATE_HISTORY: { date: string; realRate: number }[] = [
+  { date: '2022-01', realRate: -1.0 },
+  { date: '2022-02', realRate: -0.8 },
+  { date: '2022-03', realRate: -0.5 },
+  { date: '2022-04', realRate: -0.2 },
+  { date: '2022-05', realRate:  0.1 },
+  { date: '2022-06', realRate:  0.5 },
+  { date: '2022-07', realRate:  0.8 },
+  { date: '2022-08', realRate:  1.0 },
+  { date: '2022-09', realRate:  1.3 },
+  { date: '2022-10', realRate:  1.5 },
+  { date: '2022-11', realRate:  1.4 },
+  { date: '2022-12', realRate:  1.5 },
+  { date: '2023-01', realRate:  1.3 },
+  { date: '2023-02', realRate:  1.5 },
+  { date: '2023-03', realRate:  1.4 },
+  { date: '2023-04', realRate:  1.4 },
+  { date: '2023-05', realRate:  1.6 },
+  { date: '2023-06', realRate:  1.5 },
+  { date: '2023-07', realRate:  1.8 },
+  { date: '2023-08', realRate:  2.0 },
+  { date: '2023-09', realRate:  2.2 },
+  { date: '2023-10', realRate:  2.5 },
+  { date: '2023-11', realRate:  2.3 },
+  { date: '2023-12', realRate:  2.1 },
+  { date: '2024-01', realRate:  1.8 },
+  { date: '2024-02', realRate:  1.9 },
+  { date: '2024-03', realRate:  2.0 },
+  { date: '2024-04', realRate:  2.1 },
+  { date: '2024-05', realRate:  2.0 },
+  { date: '2024-06', realRate:  2.0 },
+  { date: '2024-07', realRate:  1.9 },
+  { date: '2024-08', realRate:  1.8 },
+  { date: '2024-09', realRate:  1.7 },
+  { date: '2024-10', realRate:  1.9 },
+  { date: '2024-11', realRate:  2.1 },
+  { date: '2024-12', realRate:  2.2 },
+]
 
 type ModalState =
   | { type: 'none' }
@@ -136,6 +215,40 @@ export default function Ch10Page() {
           }))
         }}
       />
+
+      {/* Gold Price History Chart */}
+      <View className='section'>
+        <Text className='section-title'>🥇 黄金价格 36 月走势</Text>
+        <MiniChart
+          id='ch10-gold-chart'
+          type='line'
+          data={GOLD_PRICE_HISTORY.map(d => ({ label: d.date.slice(2, 7), value: d.price }))}
+          title='COMEX 黄金现货 ($/oz)'
+          color='#f5a623'
+          highlightLast
+          yAxisFormat={(v) => `$${v.toFixed(0)}`}
+        />
+      </View>
+
+      {/* Real Rate History Chart */}
+      <View className='section'>
+        <Text className='section-title'>📊 10 年实际利率 (反向参照)</Text>
+        <MiniChart
+          id='ch10-real-rate-chart'
+          type='line'
+          data={REAL_RATE_HISTORY.map(d => ({ label: d.date.slice(2, 7), value: d.realRate }))}
+          title='10Y - 10Y Breakeven (%)'
+          color='#4a9eff'
+          showZeroLine
+          yAxisFormat={(v) => `${v.toFixed(1)}%`}
+        />
+        <View className='ch10-chart-note'>
+          <Text className='ch10-chart-note-text'>
+            **教科书脱钩时刻**：2023-2024 实际利率从 1.5% 升至 2.2%，金价反而从 $1900 涨到 $2700+。
+            传统模型 R²=0.36 已彻底失灵。新驱动：央行购金、地缘风险、去美元化。
+          </Text>
+        </View>
+      </View>
 
       {/* Slider Inputs */}
       <View className='panel'>

@@ -8,9 +8,73 @@ import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
 import LiveData from '../../components/LiveData'
+import MiniChart from '../../components/MiniChart'
 import { getSnapshotSync, getSeries } from '../../utils/fred'
 import { markOpened, markPredicted } from '../../utils/progress'
 import './index.scss'
+
+const TAYLOR_VS_FED_HISTORY: { date: string; taylor: number; fed: number }[] = [
+  { date: '2020-01', taylor:  2.5,  fed: 1.75 },
+  { date: '2020-02', taylor:  1.5,  fed: 1.75 },
+  { date: '2020-03', taylor: -1.0,  fed: 0.25 },
+  { date: '2020-04', taylor: -2.5,  fed: 0.25 },
+  { date: '2020-05', taylor: -3.0,  fed: 0.25 },
+  { date: '2020-06', taylor: -2.8,  fed: 0.25 },
+  { date: '2020-07', taylor: -2.5,  fed: 0.25 },
+  { date: '2020-08', taylor: -1.8,  fed: 0.25 },
+  { date: '2020-09', taylor: -1.5,  fed: 0.25 },
+  { date: '2020-10', taylor: -1.2,  fed: 0.25 },
+  { date: '2020-11', taylor: -0.8,  fed: 0.25 },
+  { date: '2020-12', taylor: -0.5,  fed: 0.25 },
+  { date: '2021-01', taylor:  0.5,  fed: 0.25 },
+  { date: '2021-02', taylor:  1.2,  fed: 0.25 },
+  { date: '2021-03', taylor:  2.0,  fed: 0.25 },
+  { date: '2021-04', taylor:  3.0,  fed: 0.25 },
+  { date: '2021-05', taylor:  4.2,  fed: 0.25 },
+  { date: '2021-06', taylor:  5.5,  fed: 0.25 },
+  { date: '2021-07', taylor:  6.0,  fed: 0.25 },
+  { date: '2021-08', taylor:  6.8,  fed: 0.25 },
+  { date: '2021-09', taylor:  7.5,  fed: 0.25 },
+  { date: '2021-10', taylor:  8.5,  fed: 0.25 },
+  { date: '2021-11', taylor:  9.5,  fed: 0.25 },
+  { date: '2021-12', taylor: 10.5,  fed: 0.25 },
+  { date: '2022-01', taylor: 11.0,  fed: 0.25 },
+  { date: '2022-02', taylor: 11.5,  fed: 0.25 },
+  { date: '2022-03', taylor: 12.0,  fed: 0.50 },
+  { date: '2022-04', taylor: 12.5,  fed: 0.50 },
+  { date: '2022-05', taylor: 13.0,  fed: 1.00 },
+  { date: '2022-06', taylor: 13.35, fed: 1.75 },
+  { date: '2022-07', taylor: 13.2,  fed: 2.50 },
+  { date: '2022-08', taylor: 13.0,  fed: 2.50 },
+  { date: '2022-09', taylor: 12.8,  fed: 3.25 },
+  { date: '2022-10', taylor: 12.5,  fed: 3.25 },
+  { date: '2022-11', taylor: 12.0,  fed: 4.00 },
+  { date: '2022-12', taylor: 11.5,  fed: 4.50 },
+  { date: '2023-01', taylor: 10.8,  fed: 4.50 },
+  { date: '2023-02', taylor: 10.5,  fed: 4.75 },
+  { date: '2023-03', taylor: 10.0,  fed: 5.00 },
+  { date: '2023-04', taylor:  9.5,  fed: 5.00 },
+  { date: '2023-05', taylor:  9.2,  fed: 5.25 },
+  { date: '2023-06', taylor:  9.0,  fed: 5.25 },
+  { date: '2023-07', taylor:  8.5,  fed: 5.25 },
+  { date: '2023-08', taylor:  8.2,  fed: 5.50 },
+  { date: '2023-09', taylor:  8.0,  fed: 5.50 },
+  { date: '2023-10', taylor:  7.5,  fed: 5.50 },
+  { date: '2023-11', taylor:  7.2,  fed: 5.50 },
+  { date: '2023-12', taylor:  7.0,  fed: 5.50 },
+  { date: '2024-01', taylor:  6.5,  fed: 5.50 },
+  { date: '2024-02', taylor:  6.2,  fed: 5.50 },
+  { date: '2024-03', taylor:  6.0,  fed: 5.50 },
+  { date: '2024-04', taylor:  5.8,  fed: 5.50 },
+  { date: '2024-05', taylor:  5.5,  fed: 5.50 },
+  { date: '2024-06', taylor:  5.3,  fed: 5.50 },
+  { date: '2024-07', taylor:  5.1,  fed: 5.50 },
+  { date: '2024-08', taylor:  5.0,  fed: 5.50 },
+  { date: '2024-09', taylor:  4.8,  fed: 5.00 },
+  { date: '2024-10', taylor:  4.7,  fed: 4.75 },
+  { date: '2024-11', taylor:  4.6,  fed: 4.75 },
+  { date: '2024-12', taylor:  4.5,  fed: 4.50 },
+]
 
 type ModalState =
   | { type: 'none' }
@@ -140,6 +204,36 @@ export default function Ch11Page() {
           }
         }}
       />
+
+      {/* Taylor Rule vs Fed History Charts */}
+      <View className='section'>
+        <Text className='section-title'>📈 泰勒规则 vs Fed 实际利率 (60 月)</Text>
+        <MiniChart
+          id='ch11-taylor-fed-chart'
+          type='line'
+          data={TAYLOR_VS_FED_HISTORY.map(d => ({ label: d.date.slice(2, 7), value: d.taylor }))}
+          title='泰勒规则隐含利率'
+          color='#f5a623'
+          showZeroLine
+          yAxisFormat={(v) => `${v.toFixed(1)}%`}
+        />
+        <MiniChart
+          id='ch11-fed-actual-chart'
+          type='line'
+          data={TAYLOR_VS_FED_HISTORY.map(d => ({ label: d.date.slice(2, 7), value: d.fed }))}
+          title='Fed 联邦基金利率(实际)'
+          color='#4a9eff'
+          showZeroLine
+          yAxisFormat={(v) => `${v.toFixed(2)}%`}
+        />
+        <View className='ch11-chart-note'>
+          <Text className='ch11-chart-note-text'>
+            **2022 高峰差距**：泰勒规则建议 13.35%，Fed 实际仅 1.75% — **1160bp 鸿沟**。
+            Fed "behind the curve" 一年，被批评是 1970s 滞胀重演的根因。
+            2024 末两线收敛到 4.5% 附近 — "正常化"完成。
+          </Text>
+        </View>
+      </View>
 
       {/* Slider Inputs */}
       <View className='panel'>

@@ -346,3 +346,174 @@ export function trilemmaScore(
   const feasible = tension <= 0;
   return { feasible, tension };
 }
+
+// ---------------------------------------------------------------------------
+// 17. Recession Probability Score (Ch1)
+//     Composite score 0-100 from multiple signals.
+//     Weights:
+//       yieldInverted:       0.25
+//       leiNegativeMonths:   0.20  (scaled by min(months/24, 1))
+//       pmiBelow50:          0.15
+//       retailNegative:      0.15
+//       unemploymentRising:  0.15
+//       nfciAbove50:         0.10
+//     Probability = sum of (weight if signal active, scaled) × 100, clamped 0–100.
+// ---------------------------------------------------------------------------
+export function recessionProbability(signals: {
+  yieldInverted: boolean        // 10Y-3M inverted
+  leiNegativeMonths: number     // months of negative LEI YoY
+  pmiBelow50: boolean           // manufacturing PMI < 50
+  retailNegative: boolean       // real retail sales YoY negative
+  unemploymentRising: boolean   // unemployment rate rising > 0.5pp from low
+  nfciAbove50: boolean          // financial conditions stressed
+}): { probability: number; weights: Record<string, number> } {
+  const weights: Record<string, number> = {
+    yieldInverted: 0.25,
+    leiNegativeMonths: 0.20,
+    pmiBelow50: 0.15,
+    retailNegative: 0.15,
+    unemploymentRising: 0.15,
+    nfciAbove50: 0.10,
+  }
+
+  const contributions: Record<string, number> = {
+    yieldInverted:       signals.yieldInverted ? weights.yieldInverted : 0,
+    leiNegativeMonths:   weights.leiNegativeMonths * Math.min(signals.leiNegativeMonths / 24, 1),
+    pmiBelow50:          signals.pmiBelow50 ? weights.pmiBelow50 : 0,
+    retailNegative:      signals.retailNegative ? weights.retailNegative : 0,
+    unemploymentRising:  signals.unemploymentRising ? weights.unemploymentRising : 0,
+    nfciAbove50:         signals.nfciAbove50 ? weights.nfciAbove50 : 0,
+  }
+
+  const raw = Object.values(contributions).reduce((sum, v) => sum + v, 0)
+  const probability = Math.min(100, Math.max(0, Math.round(raw * 100)))
+
+  return { probability, weights: contributions }
+}
+
+// ---------------------------------------------------------------------------
+// 18. Merrill Investment Clock Quadrant (Ch1)
+//     gdpGrowth: % (e.g. 2.5), cpiYoY: % (e.g. 3.0)
+//     Thresholds: GDP > 2 = up, CPI > 2.5 = up
+//       recovery:    GDP↑ CPI↓  → 股票 (equities lead)
+//       overheat:    GDP↑ CPI↑  → 商品 (commodities lead)
+//       stagflation: GDP↓ CPI↑  → 现金 (cash / short duration)
+//       recession:   GDP↓ CPI↓  → 债券 (bonds lead)
+// ---------------------------------------------------------------------------
+export function merrillClockQuadrant(
+  gdpGrowth: number,
+  cpiYoY: number
+): {
+  quadrant: 'recovery' | 'overheat' | 'stagflation' | 'recession'
+  zhName: string
+  primaryAsset: string
+  assets: string[]
+} {
+  const gdpUp = gdpGrowth > 2
+  const cpiUp = cpiYoY > 2.5
+
+  if (gdpUp && !cpiUp) {
+    return {
+      quadrant: 'recovery',
+      zhName: '复苏期',
+      primaryAsset: '股票',
+      assets: ['股票', '信用债', '工业金属'],
+    }
+  } else if (gdpUp && cpiUp) {
+    return {
+      quadrant: 'overheat',
+      zhName: '过热期',
+      primaryAsset: '商品',
+      assets: ['大宗商品', '能源', '通胀保值债（TIPS）', '周期股'],
+    }
+  } else if (!gdpUp && cpiUp) {
+    return {
+      quadrant: 'stagflation',
+      zhName: '滞胀期',
+      primaryAsset: '现金',
+      assets: ['现金', '短期国债', '黄金', '大宗商品'],
+    }
+  } else {
+    return {
+      quadrant: 'recession',
+      zhName: '衰退期',
+      primaryAsset: '债券',
+      assets: ['长期国债', '黄金', '防御性股票（公用事业/必需消费）'],
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 19. Inventory Cycle Phase Detection (Ch1)
+//     inventoryYoY: inventory YoY % change
+//     salesYoY: sales YoY % change
+//     Threshold: 2% for both (above = up, below = down)
+//     4 phases:
+//       主动补库存 (stage 1): sales↑ + inventory↑  → expansion
+//       被动补库存 (stage 2): sales↓ + inventory↑  → slowdown warning
+//       主动去库存 (stage 3): sales↓ + inventory↓  → recession risk
+//       被动去库存 (stage 4): sales↑ + inventory↓  → recovery
+// ---------------------------------------------------------------------------
+export function inventoryPhase(
+  inventoryYoY: number,
+  salesYoY: number
+): { phase: string; description: string; cycleStage: number } {
+  const salesUp     = salesYoY > 2
+  const inventoryUp = inventoryYoY > 2
+
+  if (salesUp && inventoryUp) {
+    return {
+      phase: '主动补库存',
+      description: '需求旺盛，企业主动增加库存。经济扩张期，周期股与大宗商品表现强势。',
+      cycleStage: 1,
+    }
+  } else if (!salesUp && inventoryUp) {
+    return {
+      phase: '被动补库存',
+      description: '需求放缓但库存仍在积压，企业盈利承压。经济转折预警，防御性配置为主。',
+      cycleStage: 2,
+    }
+  } else if (!salesUp && !inventoryUp) {
+    return {
+      phase: '主动去库存',
+      description: '需求下滑，企业主动清减库存与产能。经济收缩期，债券与黄金为避险首选。',
+      cycleStage: 3,
+    }
+  } else {
+    // salesUp && !inventoryUp
+    return {
+      phase: '被动去库存',
+      description: '需求回暖而库存自然消耗，经济触底复苏早期。成长股与信用债迎来布局窗口。',
+      cycleStage: 4,
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 20. NBER Composite Score (Ch1)
+//     All inputs as YoY % change (e.g. 1.5 for 1.5%).
+//     score = simple average of the 4 indicators
+//     status: > 1.5 = expansion, < -0.5 = contraction, else mixed
+// ---------------------------------------------------------------------------
+export function nberCompositeScore(indicators: {
+  industrialProduction: number   // YoY %
+  retailSales: number            // YoY %
+  nonfarmPayrolls: number        // YoY %
+  realIncome: number             // YoY %
+}): { score: number; status: 'expansion' | 'contraction' | 'mixed' } {
+  const { industrialProduction, retailSales, nonfarmPayrolls, realIncome } = indicators
+  const score = parseFloat(
+    ((industrialProduction + retailSales + nonfarmPayrolls + realIncome) / 4).toFixed(2)
+  )
+
+  let status: 'expansion' | 'contraction' | 'mixed'
+  if (score > 1.5) {
+    status = 'expansion'
+  } else if (score < -0.5) {
+    status = 'contraction'
+  } else {
+    status = 'mixed'
+  }
+
+  return { score, status }
+}

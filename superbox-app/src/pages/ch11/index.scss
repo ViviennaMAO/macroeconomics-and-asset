@@ -133,3 +133,32 @@
     display: block;
   }
 }
+
+// ─── Chart section ───────────────────────────────────────────────────────────
+
+.section {
+  margin: 16px 16px 8px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e8ecf4;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.ch11-chart-note {
+  margin: 8px 0 4px;
+  padding: 12px 14px;
+  background: rgba(74, 158, 255, 0.06);
+  border-left: 3px solid #f5a623;
+  border-radius: 0 8px 8px 0;
+}
+
+.ch11-chart-note-text {
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.7;
+  display: block;
+}
