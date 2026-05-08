@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from '@tarojs/components'
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Taro from '@tarojs/taro'
 import { ch7Snapshots } from '../../utils/snapshots'
 import { bondPrice, modifiedDuration } from '../../utils/formulas'
@@ -7,6 +7,9 @@ import SnapshotBar from '../../components/SnapshotBar'
 import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
+import LiveData from '../../components/LiveData'
+import { getSeries } from '../../utils/fred'
+import type { FredSnapshot } from '../../data/fred-baseline'
 import { markOpened, markPredicted } from '../../utils/progress'
 import './index.scss'
 
@@ -22,6 +25,7 @@ export default function Ch7Page() {
   const [activeKey, setActiveKey] = useState<string | undefined>(undefined)
   const [flash, setFlash] = useState(false)
   const [modal, setModal] = useState<ModalState>({ type: 'none' })
+  const userEdited = useRef(false)
 
   useEffect(() => {
     markOpened(7)
@@ -51,6 +55,7 @@ export default function Ch7Page() {
   }
 
   function updateParam<K extends keyof typeof params>(key: K, value: (typeof params)[K]) {
+    userEdited.current = true
     setParams((prev) => ({ ...prev, [key]: value }))
     triggerFlash()
   }
@@ -112,6 +117,25 @@ export default function Ch7Page() {
         items={ch7Snapshots}
         activeKey={activeKey}
         onSelect={handleSnapshotSelect}
+      />
+
+      {/* Live FRED Data */}
+      <LiveData
+        title='📡 当前美债市场'
+        autoRefresh
+        tiles={[
+          { id: 'DGS2',         hint: '2年期' },
+          { id: 'DGS10',        hint: '10年期' },
+          { id: 'DGS30',        hint: '30年期' },
+          { id: 'T10Y2Y',       hint: '期限利差' },
+          { id: '_spread2s10s', hint: '2s10s bps' },
+        ]}
+        onLoaded={(freshSnap: FredSnapshot) => {
+          const dgs10 = getSeries(freshSnap, 'DGS10')
+          if (dgs10 && !userEdited.current) {
+            setParams((prev) => ({ ...prev, ytm: dgs10.value }))
+          }
+        }}
       />
 
       {/* Slider Inputs */}

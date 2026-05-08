@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from '@tarojs/components'
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Taro from '@tarojs/taro'
 import { ch10Snapshots } from '../../utils/snapshots'
 import { goldFairValue } from '../../utils/formulas'
@@ -7,6 +7,9 @@ import SnapshotBar from '../../components/SnapshotBar'
 import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
+import LiveData from '../../components/LiveData'
+import { getSeries } from '../../utils/fred'
+import type { FredSnapshot } from '../../data/fred-baseline'
 import { markOpened, markPredicted } from '../../utils/progress'
 import './index.scss'
 
@@ -22,6 +25,7 @@ export default function Ch10Page() {
   const [activeKey, setActiveKey] = useState<string | undefined>(undefined)
   const [flash, setFlash] = useState(false)
   const [modal, setModal] = useState<ModalState>({ type: 'none' })
+  const userEdited = useRef(false)
 
   useEffect(() => {
     markOpened(10)
@@ -40,6 +44,7 @@ export default function Ch10Page() {
   }
 
   function updateParam<K extends keyof typeof params>(key: K, value: (typeof params)[K]) {
+    userEdited.current = true
     setParams((prev) => ({ ...prev, [key]: value }))
     triggerFlash()
   }
@@ -108,6 +113,28 @@ export default function Ch10Page() {
         items={ch10Snapshots}
         activeKey={activeKey}
         onSelect={handleSnapshotSelect}
+      />
+
+      {/* Live FRED Data */}
+      <LiveData
+        title='📡 当前黄金市场'
+        autoRefresh
+        tiles={[
+          { id: 'GOLDAMGBD228NLBM', hint: '现货金价' },
+          { id: '_realRate10y',     hint: '实际利率' },
+          { id: 'T10YIE',           hint: '盈亏平衡' },
+          { id: 'DFF',              hint: 'Fed利率' },
+        ]}
+        onLoaded={(freshSnap: FredSnapshot) => {
+          if (userEdited.current) return
+          const realRate = getSeries(freshSnap, '_realRate10y')
+          const dxy = getSeries(freshSnap, 'DTWEXBGS')
+          setParams((prev) => ({
+            ...prev,
+            ...(realRate ? { realRate: realRate.value } : {}),
+            ...(dxy ? { dxyIndex: dxy.value } : {}),
+          }))
+        }}
       />
 
       {/* Slider Inputs */}

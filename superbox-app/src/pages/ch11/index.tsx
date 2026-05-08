@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from '@tarojs/components'
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Taro from '@tarojs/taro'
 import { ch11Snapshots } from '../../utils/snapshots'
 import { taylorRule } from '../../utils/formulas'
@@ -7,6 +7,8 @@ import SnapshotBar from '../../components/SnapshotBar'
 import SliderRow from '../../components/SliderRow'
 import PredictModal from '../../components/PredictModal'
 import RevealModal from '../../components/RevealModal'
+import LiveData from '../../components/LiveData'
+import { getSnapshotSync, getSeries } from '../../utils/fred'
 import { markOpened, markPredicted } from '../../utils/progress'
 import './index.scss'
 
@@ -29,6 +31,8 @@ export default function Ch11Page() {
   const [activeKey, setActiveKey] = useState<string | undefined>(undefined)
   const [flash, setFlash] = useState(false)
   const [modal, setModal] = useState<ModalState>({ type: 'none' })
+  const [liveSnap, setLiveSnap] = useState(() => getSnapshotSync())
+  const userEdited = useRef(false)
 
   useEffect(() => {
     markOpened(11)
@@ -44,12 +48,20 @@ export default function Ch11Page() {
   const gapBp = gap != null ? Math.round(gap * 100) : null
   const gapIsLarge = gapBp != null && Math.abs(gapBp) > 200
 
+  // Live gap: Taylor implied vs live DFF
+  const liveDff = getSeries(liveSnap, 'DFF')
+  const liveFedRate = liveDff?.value ?? null
+  const liveGap = liveFedRate != null ? impliedRate - liveFedRate : null
+  const liveGapBp = liveGap != null ? Math.round(liveGap * 100) : null
+  const liveGapIsLarge = liveGapBp != null && Math.abs(liveGapBp) > 200
+
   function triggerFlash() {
     setFlash(true)
     setTimeout(() => setFlash(false), 600)
   }
 
   function updateParam<K extends keyof typeof params>(key: K, value: (typeof params)[K]) {
+    userEdited.current = true
     setParams((prev) => ({ ...prev, [key]: value }))
     triggerFlash()
   }
@@ -107,6 +119,26 @@ export default function Ch11Page() {
         items={ch11Snapshots}
         activeKey={activeKey}
         onSelect={handleSnapshotSelect}
+      />
+
+      {/* Live FRED Data */}
+      <LiveData
+        title='📡 当前宏观数据'
+        autoRefresh
+        tiles={[
+          { id: 'DFF',      hint: 'Fed实际利率' },
+          { id: 'CPIAUCSL', hint: 'CPI同比' },
+          { id: 'CPILFESL', hint: '核心CPI' },
+          { id: 'UNRATE',   hint: '失业率' },
+          { id: 'M2SL',     hint: 'M2增速' },
+        ]}
+        onLoaded={(freshSnap) => {
+          setLiveSnap(freshSnap)
+          const cpi = getSeries(freshSnap, 'CPIAUCSL')
+          if (cpi && !userEdited.current) {
+            setParams((p) => ({ ...p, inflation: cpi.value }))
+          }
+        }}
       />
 
       {/* Slider Inputs */}
@@ -200,6 +232,33 @@ export default function Ch11Page() {
             : '。选择历史快照可对比Fed实际利率。'}
         </Text>
       </View>
+
+      {/* Live Rule vs Reality Callout */}
+      {liveFedRate != null && liveGapBp != null && (
+        <View className={`ch11-gap-callout${liveGapIsLarge ? ' ch11-gap-callout--large' : ''}`}>
+          <Text className='ch11-gap-callout__title'>📊 规则 vs 现实</Text>
+          <View className='ch11-gap-callout__row'>
+            <View className='ch11-gap-callout__item'>
+              <Text className='ch11-gap-callout__label'>泰勒规则利率</Text>
+              <Text className='ch11-gap-callout__value'>{formatRate(impliedRate)}</Text>
+            </View>
+            <View className='ch11-gap-callout__item'>
+              <Text className='ch11-gap-callout__label'>Fed实际利率</Text>
+              <Text className='ch11-gap-callout__value'>{formatRate(liveFedRate)}</Text>
+            </View>
+            <View className='ch11-gap-callout__item'>
+              <Text className='ch11-gap-callout__label'>差距</Text>
+              <Text className={`ch11-gap-callout__value ch11-gap-callout__gap${liveGapIsLarge ? '--large' : '--small'}`}>
+                {formatGapBp(liveGapBp)}
+              </Text>
+            </View>
+          </View>
+          <Text className='ch11-gap-callout__hint'>
+            {`泰勒说 ${formatRate(impliedRate)}，Fed 实际 ${formatRate(liveFedRate)}，差 ${formatGapBp(liveGapBp)}`}
+            {liveGapIsLarge ? '（超过200bp，裁量空间显著）' : ''}
+          </Text>
+        </View>
+      )}
 
       {/* Edu Cards */}
       <View className='edu-card'>

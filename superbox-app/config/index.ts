@@ -14,7 +14,7 @@ export default {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-framework-react'],
   defineConstants: {},
-  copy: { patterns: [{ from: 'src/index.html', to: 'dist/index.html' }], options: {} },
+  copy: { patterns: [], options: {} },
   framework: 'react',
   compiler: 'webpack5',
   mini: {
