@@ -1,14 +1,42 @@
-.ch8 {
+// Ch8 — Mag7 集中度模拟器
+// Extends global classes from app.scss: .panel, .output, .edu-card, .further-cta
+
+.ch8-page {
   min-height: 100vh;
-  padding-bottom: 40px;
+  background: #0a0e1a;
 }
-.coming-soon {
-  margin: 20px 16px;
-  padding: 24px;
+
+.ch8-val--positive {
+  color: #4cd964;
+}
+
+.ch8-val--negative {
+  color: #ff4757;
+}
+
+// 3-column breakdown
+.ch8-breakdown {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ch8-stat-col {
+  flex: 1;
+  background: #0e1523;
+  border-radius: 8px;
+  padding: 10px 10px 8px;
+  border: 1px solid #1e2a40;
   text-align: center;
-  background: #141927;
-  border-radius: 12px;
-  border: 1px dashed rgba(255,255,255,0.1);
-  .coming-text { font-size: 16px; display: block; margin-bottom: 4px; }
-  .coming-sub { font-size: 12px; color: #5a6478; display: block; }
+}
+
+.ch8-stat--amber {
+  color: #f5a623;
+}
+
+.ch8-stat--alert {
+  color: #ff4757;
 }

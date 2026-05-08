@@ -235,7 +235,103 @@ export function goldFairValue(
 }
 
 // ---------------------------------------------------------------------------
-// 11. Trilemma Score (Ch12)
+// 12. Sovereign Spread (Ch2 — Eurozone fragmentation)
+//     debtToGdp: %, fiscalDeficit: % of GDP, ecbBaseRate: %
+//     spread (bps) = max(0, 30*(debtToGdp-60) + 80*fiscalDeficit + politicalRisk*100 - bondBuyingFactor)
+//     where political risk in 0..1, bondBuyingFactor reduces spread (ECB intervention)
+// ---------------------------------------------------------------------------
+export function sovereignSpread(
+  debtToGdp: number,
+  fiscalDeficit: number,
+  politicalRisk: number,
+  ecbIntervention: number
+): { spreadBps: number; debtComponent: number; fiscalComponent: number; politicalComponent: number } {
+  const debtComponent = Math.max(0, (debtToGdp - 60) * 3);
+  const fiscalComponent = Math.max(0, fiscalDeficit * 25);
+  const politicalComponent = politicalRisk * 200;
+  const interventionEffect = ecbIntervention * 150; // 0..1 scale
+  const spreadBps = Math.max(
+    0,
+    debtComponent + fiscalComponent + politicalComponent - interventionEffect
+  );
+  return { spreadBps, debtComponent, fiscalComponent, politicalComponent };
+}
+
+// ---------------------------------------------------------------------------
+// 13. Yen Inflation Pass-through (Ch3 — Japan)
+//     usdJpy: 80..200, oilPrice: USD/bbl, wageGrowth: %, importShare: % of CPI basket
+//     coreInflation = wageGrowth*0.4 + (yen_depreciation_yoy * importShare/100 * 0.6)
+//     where yen_depreciation_yoy = (usdJpy/baseline - 1) * 100, baseline = 110
+// ---------------------------------------------------------------------------
+export function yenInflation(
+  usdJpy: number,
+  oilPrice: number,
+  wageGrowth: number,
+  importShare: number
+): { headlineCpi: number; coreCpi: number; fxComponent: number; oilComponent: number; wageComponent: number } {
+  const baseline = 110;
+  const yenDepreciation = ((usdJpy - baseline) / baseline) * 100; // %
+  const fxComponent = yenDepreciation * (importShare / 100) * 0.6;
+  const oilBaseline = 70;
+  const oilComponent = ((oilPrice - oilBaseline) / oilBaseline) * 100 * 0.15;
+  const wageComponent = wageGrowth * 0.4;
+  const coreCpi = wageComponent + fxComponent * 0.5; // core excludes oil
+  const headlineCpi = coreCpi + oilComponent;
+  return { headlineCpi, coreCpi, fxComponent, oilComponent, wageComponent };
+}
+
+// ---------------------------------------------------------------------------
+// 14. Global GDP Weighted Growth (Ch5)
+//     mode: 'market' uses market FX weights, 'ppp' uses PPP weights
+//     usGrowth, euGrowth, chinaGrowth, indiaGrowth, otherGrowth: %
+//     2024 weights:
+//       Market FX: US 26%, EU 17%, CN 17%, IN 4%, Other 36%
+//       PPP:       US 15%, EU 14%, CN 19%, IN 8%, Other 44%
+// ---------------------------------------------------------------------------
+export function globalGdpWeighted(
+  mode: 'market' | 'ppp',
+  usGrowth: number,
+  euGrowth: number,
+  chinaGrowth: number,
+  indiaGrowth: number,
+  otherGrowth: number
+): { weightedGrowth: number; weights: { us: number; eu: number; cn: number; in: number; other: number } } {
+  const weights =
+    mode === 'market'
+      ? { us: 0.26, eu: 0.17, cn: 0.17, in: 0.04, other: 0.36 }
+      : { us: 0.15, eu: 0.14, cn: 0.19, in: 0.08, other: 0.44 };
+  const weightedGrowth =
+    usGrowth * weights.us +
+    euGrowth * weights.eu +
+    chinaGrowth * weights.cn +
+    indiaGrowth * weights.in +
+    otherGrowth * weights.other;
+  return { weightedGrowth, weights };
+}
+
+// ---------------------------------------------------------------------------
+// 15. Mag7 Concentration Effect (Ch8 — US Equities)
+//     mag7Weight: % weight of Mag7 in S&P 500 (~30 in 2024)
+//     mag7Return: % YTD return of Mag7
+//     restReturn: % YTD return of remaining 493 stocks
+//     Returns: indexReturn, contributionFromMag7 (% points), restContribution (% points)
+// ---------------------------------------------------------------------------
+export function mag7Concentration(
+  mag7Weight: number,
+  mag7Return: number,
+  restReturn: number
+): { indexReturn: number; mag7Contribution: number; restContribution: number; concentrationRatio: number } {
+  const w = mag7Weight / 100;
+  const mag7Contribution = w * mag7Return;
+  const restContribution = (1 - w) * restReturn;
+  const indexReturn = mag7Contribution + restContribution;
+  // Concentration ratio = how much of the index move comes from Mag7
+  const concentrationRatio = indexReturn !== 0 ? (mag7Contribution / indexReturn) * 100 : 0;
+  return { indexReturn, mag7Contribution, restContribution, concentrationRatio };
+}
+
+// ---------------------------------------------------------------------------
+// 16. Trilemma Score (Ch12)
 //     capitalOpenness, exchangeFlexibility, monetaryIndependence: 0–100
 //     tension = max(0, sum - 200)   (the impossible trinity constraint)
 //     feasible = tension <= 0

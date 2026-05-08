@@ -431,3 +431,208 @@ export const ch4Snapshots: SnapshotItem<Ch4Params>[] = [
     },
   },
 ]
+
+// ─── Ch2: 欧洲主权利差 ─────────────────────────────────────────────────────────
+
+export interface Ch2Params {
+  debtToGdp: number
+  fiscalDeficit: number
+  politicalRisk: number
+  ecbIntervention: number
+}
+
+export const ch2Snapshots: SnapshotItem<Ch2Params>[] = [
+  {
+    key: '2007',
+    label: '2007 欧元蜜月',
+    params: { debtToGdp: 100, fiscalDeficit: 1.5, politicalRisk: 0.05, ecbIntervention: 0 },
+  },
+  {
+    key: '2011',
+    label: '2011 欧债危机',
+    accent: 'danger',
+    params: { debtToGdp: 116, fiscalDeficit: 4.0, politicalRisk: 0.85, ecbIntervention: 0 },
+    predict: {
+      question: '2011欧债危机，意大利vs德国10年期利差最高飙到多少？',
+      options: ['100bps', '300bps', '550bps', '1200bps'],
+      correct: 2,
+      contextLine: '同一货币区，主权风险却天差地别',
+    },
+    reveal: {
+      title: '统一货币没统一风险',
+      delta: '+550bps',
+      explain: '意大利10年利率冲到7%，德国仅1.5%，利差550bp。直到德拉吉"whatever it takes"承诺(2012.7)+OMT工具，利差才迅速收敛。',
+      twist: '教材分析欧元区用同一框架，但2011-12年证明：同一央行、同一货币，主权信用却完全分化——结构性差异不能被货币联盟掩盖。',
+    },
+  },
+  {
+    key: '2015',
+    label: '2015 QE救市',
+    params: { debtToGdp: 132, fiscalDeficit: 2.6, politicalRisk: 0.20, ecbIntervention: 0.85 },
+  },
+  {
+    key: '2024',
+    label: '2024 当前',
+    params: { debtToGdp: 137, fiscalDeficit: 7.2, politicalRisk: 0.30, ecbIntervention: 0.50 },
+  },
+]
+
+// ─── Ch3: 日元-通胀传导 ────────────────────────────────────────────────────────
+
+export interface Ch3Params {
+  usdJpy: number
+  oilPrice: number
+  wageGrowth: number
+  importShare: number
+}
+
+export const ch3Snapshots: SnapshotItem<Ch3Params>[] = [
+  {
+    key: '2013',
+    label: '2013 黑田QQE',
+    params: { usdJpy: 100, oilPrice: 100, wageGrowth: 0.5, importShare: 25 },
+  },
+  {
+    key: '2020',
+    label: '2020 通缩',
+    params: { usdJpy: 105, oilPrice: 40, wageGrowth: -0.5, importShare: 25 },
+  },
+  {
+    key: '2024',
+    label: '2024 日元贬到底',
+    accent: 'danger',
+    params: { usdJpy: 161, oilPrice: 80, wageGrowth: 5.1, importShare: 28 },
+    predict: {
+      question: 'USD/JPY从110飙到161(贬值46%)，日本核心CPI最终突破？',
+      options: ['仍0%以下', '+1%', '+2%以上', '+5%'],
+      correct: 2,
+      contextLine: '日本央行30年通缩战，靠日元贬值终结？',
+    },
+    reveal: {
+      title: '不是流动性陷阱，是没贬够',
+      delta: '核心CPI +2.7%',
+      explain: '2024年日本核心CPI连续多月>2%，30年来首次稳定突破央行目标。BOJ7月加息，结束负利率时代。汇率传导(import inflation)+工资春斗双轮驱动。',
+      twist: '教材说QQE失败因"流动性陷阱"，但2022-24证明：日元贬50%后通胀来了——汇率才是打破通缩的真武器，不是货币基数。',
+    },
+  },
+]
+
+// ─── Ch5: 全球GDP权重 ──────────────────────────────────────────────────────────
+
+export interface Ch5Params {
+  mode: 'market' | 'ppp'
+  usGrowth: number
+  euGrowth: number
+  chinaGrowth: number
+  indiaGrowth: number
+  otherGrowth: number
+}
+
+export const ch5Snapshots: SnapshotItem<Ch5Params>[] = [
+  {
+    key: 'market2024',
+    label: '2024 市场汇率',
+    params: { mode: 'market', usGrowth: 2.7, euGrowth: 0.7, chinaGrowth: 5.0, indiaGrowth: 7.0, otherGrowth: 3.5 },
+  },
+  {
+    key: 'ppp2024',
+    label: '2024 PPP权重',
+    accent: 'primary',
+    params: { mode: 'ppp', usGrowth: 2.7, euGrowth: 0.7, chinaGrowth: 5.0, indiaGrowth: 7.0, otherGrowth: 3.5 },
+    predict: {
+      question: '同样是2024各国增速，市场汇率vs PPP加权的全球增速差多少？',
+      options: ['基本一致', '差0.5pp', '差1pp+', '差2pp+'],
+      correct: 2,
+      contextLine: 'G7权重在PPP口径下仅占29%',
+    },
+    reveal: {
+      title: 'G7代表全球？早已过时',
+      delta: '+1.0pp',
+      explain: 'PPP加权下中国/印度/EM占比远高于市场汇率，2024年PPP全球增速约3.6%，市场汇率仅2.6%——差1pp。教材数据截至~2018年，G7权重已从65%腰斩到43%。',
+      twist: '用旧权重分析全球周期，会系统性低估中国/印度/东盟。EM不再是配角——他们已经是主角。',
+    },
+  },
+]
+
+// ─── Ch8: Mag7集中度 ───────────────────────────────────────────────────────────
+
+export interface Ch8Params {
+  mag7Weight: number
+  mag7Return: number
+  restReturn: number
+}
+
+export const ch8Snapshots: SnapshotItem<Ch8Params>[] = [
+  {
+    key: '2010',
+    label: '2010 大盘均衡',
+    params: { mag7Weight: 12, mag7Return: 18, restReturn: 12 },
+  },
+  {
+    key: '2023',
+    label: '2023 Mag7独舞',
+    accent: 'danger',
+    params: { mag7Weight: 28, mag7Return: 75, restReturn: 8 },
+    predict: {
+      question: '2023年S&P 500涨26%，去掉Mag7后剩余493只股票涨多少？',
+      options: ['-5%', '+5%', '+15%', '+25%'],
+      correct: 0,
+      contextLine: '全美股年度收益，被7只股票全部决定？',
+    },
+    reveal: {
+      title: 'Mag7独舞，剩下493只阴跌',
+      delta: 'Mag7贡献60%涨幅',
+      explain: '2023年S&P 500涨26%，但equal-weight指数仅涨14%；去掉Mag7的剩余493只股票合计回报接近0——分析"美股"其实只在分析7只股票。',
+      twist: '教材PE均值回归假设基于"分散投资组合"，但2023-24指数级集中度让均值分析失效。建议用equity risk premium替代历史PE均值。',
+    },
+  },
+  {
+    key: '2024',
+    label: '2024 仍集中',
+    params: { mag7Weight: 32, mag7Return: 35, restReturn: 12 },
+  },
+]
+
+// ─── Ch12: 三元悖论 ────────────────────────────────────────────────────────────
+
+export interface Ch12Params {
+  capitalOpenness: number
+  exchangeFlexibility: number
+  monetaryIndependence: number
+}
+
+export const ch12Snapshots: SnapshotItem<Ch12Params>[] = [
+  {
+    key: 'us',
+    label: '🇺🇸 美国(浮汇+独立)',
+    params: { capitalOpenness: 95, exchangeFlexibility: 90, monetaryIndependence: 90 },
+  },
+  {
+    key: 'cn',
+    label: '🇨🇳 中国(管制+独立)',
+    params: { capitalOpenness: 35, exchangeFlexibility: 40, monetaryIndependence: 85 },
+  },
+  {
+    key: 'hk',
+    label: '🇭🇰 香港(开放+联汇)',
+    params: { capitalOpenness: 95, exchangeFlexibility: 5, monetaryIndependence: 10 },
+  },
+  {
+    key: 'cn2015',
+    label: '⚡ 2015中国811汇改',
+    accent: 'danger',
+    params: { capitalOpenness: 60, exchangeFlexibility: 55, monetaryIndependence: 80 },
+    predict: {
+      question: '2015年中国想"加点开放+加点弹性+保留独立"，结果？',
+      options: ['顺利转型', '汇率小波动', '资本外流7000亿$', '完全没事'],
+      correct: 2,
+      contextLine: '同时碰三角的三条边，后果多严重？',
+    },
+    reveal: {
+      title: '三元悖论是物理定律',
+      delta: '资本外流 7000亿$',
+      explain: '2015年8月11日汇改后中国试图同时拥有更高的资本开放、汇率弹性和货币独立性，结果触发外储从4万亿$跌到3万亿$，资本外流约7000亿$。央行被迫重新管制资本流动。',
+      twist: '教材用三元悖论解释亚洲金融危机，但2015中国证明：从固定到浮动的"过渡态"比稳态更危险——切换本身就是危机触发器。',
+    },
+  },
+]
