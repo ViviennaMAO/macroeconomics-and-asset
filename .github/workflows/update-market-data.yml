@@ -32,14 +32,26 @@ jobs:
         run: node superbox-app/scripts/update-fred-data.mjs
 
       - name: Commit if changed
+        id: commit
         run: |
           git config user.name  "market-data-bot"
           git config user.email "actions@github.com"
           if git diff --quiet -- superbox-app/public/data/fred-latest.json; then
             echo "No data change — nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git add superbox-app/public/data/fred-latest.json
             git commit -m "chore(data): auto-update market snapshot [skip ci]"
             git push
             echo "Pushed updated market snapshot."
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Purge jsDelivr cache
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          # Force jsDelivr to drop its cached copy so the @main URL serves the
+          # new snapshot immediately instead of waiting out the ~12h branch TTL.
+          PATH_PART="gh/ViviennaMAO/macroeconomics-and-asset@main/superbox-app/public/data/fred-latest.json"
+          echo "Purging https://purge.jsdelivr.net/$PATH_PART"
+          curl -sS --max-time 30 "https://purge.jsdelivr.net/$PATH_PART" || echo "purge request failed (non-fatal)"
