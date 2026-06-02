@@ -150,7 +150,7 @@ export const parts: Part[] = [
     num: 3,
     title: '货币政策与汇率篇',
     desc: '解构各国央行政策工具的传导机制，并通过汇率危机案例揭示制度切换的非线性风险',
-    range: 'Ch11–12',
+    range: 'Ch11–13',
     chapters: [
       {
         num: 11,
@@ -172,6 +172,17 @@ export const parts: Part[] = [
         implemented: true,
         pagePath: '/pages/ch12/index',
         hook: '无论是泰铢、阿根廷比索还是人民币汇改，历史反复证明：汇率制度的切换时机与方式，往往本身就是危机的引爆点，而非解决方案。',
+        tier: 'mvp',
+      },
+      {
+        num: 13,
+        title: '美联储货币政策深度解析',
+        emoji: '🏦',
+        brief: '中性利率从4%跌到0.5%，"正常"永久改变了',
+        difficulty: 5,
+        implemented: true,
+        pagePath: '/pages/ch13/index',
+        hook: '从沃尔克20%利率到贝南克QE无限，从2%硬目标到AIT超调框架——当R*持续下行重塑货币政策下界，读懂美联储才能读懂所有资产的定价基准。',
         tier: 'mvp',
       },
     ],

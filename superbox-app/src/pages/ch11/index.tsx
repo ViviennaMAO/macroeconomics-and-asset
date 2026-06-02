@@ -74,6 +74,23 @@ const TAYLOR_VS_FED_HISTORY: { date: string; taylor: number; fed: number }[] = [
   { date: '2024-10', taylor:  4.7,  fed: 4.75 },
   { date: '2024-11', taylor:  4.6,  fed: 4.75 },
   { date: '2024-12', taylor:  4.5,  fed: 4.50 },
+  { date: '2025-01', taylor:  4.4,  fed: 4.50 },
+  { date: '2025-02', taylor:  4.3,  fed: 4.50 },
+  { date: '2025-03', taylor:  4.2,  fed: 4.25 },
+  { date: '2025-04', taylor:  4.1,  fed: 4.25 },
+  { date: '2025-05', taylor:  4.0,  fed: 4.00 },
+  { date: '2025-06', taylor:  3.9,  fed: 4.00 },
+  { date: '2025-07', taylor:  3.9,  fed: 3.75 },
+  { date: '2025-08', taylor:  4.0,  fed: 3.75 },
+  { date: '2025-09', taylor:  4.3,  fed: 3.75 },
+  { date: '2025-10', taylor:  4.6,  fed: 3.75 },
+  { date: '2025-11', taylor:  4.9,  fed: 3.75 },
+  { date: '2025-12', taylor:  5.1,  fed: 3.75 },
+  { date: '2026-01', taylor:  5.2,  fed: 3.75 },
+  { date: '2026-02', taylor:  5.3,  fed: 3.75 },
+  { date: '2026-03', taylor:  5.4,  fed: 3.75 },
+  { date: '2026-04', taylor:  5.3,  fed: 3.75 },
+  { date: '2026-05', taylor:  5.2,  fed: 3.75 },
 ]
 
 type ModalState =

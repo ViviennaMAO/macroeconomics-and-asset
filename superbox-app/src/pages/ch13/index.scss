@@ -1,0 +1,1304 @@
+// ─── Ch13: Fed Monetary Policy ──────────────────────────────────────────────
+
+.ch13-page {
+  background: #0a0e1a;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+// ─── Hook ────────────────────────────────────────────────────────────────────
+.ch13-hook {
+  padding: 28px 16px 20px;
+  background: linear-gradient(160deg, #0f1628 0%, #0a0e1a 60%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+
+  &__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4a9eff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #e8ecf4;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 13px;
+    color: #6b7a95;
+    line-height: 1.6;
+  }
+}
+
+// ─── Section Wrapper ─────────────────────────────────────────────────────────
+.ch13-section {
+  margin: 12px 12px 0;
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 14px;
+  overflow: hidden;
+
+  &--last {
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8ecf4;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+}
+
+.ch13-subsection-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a9eff;
+  letter-spacing: 0.5px;
+  margin: 14px 0 8px;
+}
+
+// ─── Dual Mandate Card ───────────────────────────────────────────────────────
+.ch13-mandate-card {
+  display: flex;
+  align-items: stretch;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.ch13-mandate-item {
+  flex: 1;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ch13-mandate-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 10px 0;
+}
+
+.ch13-mandate__icon {
+  font-size: 22px;
+}
+
+.ch13-mandate__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8ecf4;
+}
+
+.ch13-mandate__desc {
+  font-size: 11px;
+  color: #6b7a95;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.ch13-mandate--price { background: rgba(74,158,255,0.05); }
+.ch13-mandate--jobs  { background: rgba(76,217,100,0.05); }
+
+// ─── Info Box ────────────────────────────────────────────────────────────────
+.ch13-info-box {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border-left: 3px solid #4a9eff;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  &--amber {
+    border-left-color: #f5a623;
+  }
+
+  &--purple {
+    border-left-color: #a855f7;
+  }
+
+  &__title {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e8ecf4;
+    margin-bottom: 6px;
+  }
+
+  &__body {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+}
+
+// ─── Chairs Timeline ─────────────────────────────────────────────────────────
+.ch13-chairs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ch13-chair-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+  }
+
+  &__era {
+    font-size: 11px;
+    font-weight: 600;
+    color: #4a9eff;
+    background: rgba(74,158,255,0.1);
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+
+  &__years {
+    display: block;
+    font-size: 10px;
+    color: #5a6478;
+    margin-bottom: 4px;
+  }
+
+  &__note {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.5;
+  }
+}
+
+// ─── MVP / Highlight Boxes ───────────────────────────────────────────────────
+.ch13-mvp-box {
+  background: rgba(245,166,35,0.06);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+
+  &--red {
+    background: rgba(255,71,87,0.06);
+    border-color: rgba(255,71,87,0.2);
+
+    .ch13-mvp-box__label {
+      color: #ff4757;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f5a623;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    display: block;
+    font-size: 12px;
+    color: #c4a96b;
+    line-height: 1.7;
+  }
+}
+
+.ch13-mvp-box--red .ch13-mvp-box__text {
+  color: #d4848a;
+}
+
+.ch13-highlight-box {
+  background: rgba(74,158,255,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+
+  &__text {
+    display: block;
+    font-size: 12px;
+    color: #4a9eff;
+    line-height: 1.6;
+  }
+}
+
+// ─── Policy Toolkit Cards ────────────────────────────────────────────────────
+.ch13-tool-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-left: 3px solid #4a9eff;
+    padding-left: 10px;
+    margin-bottom: 8px;
+  }
+
+  &__tool {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+    flex: 1;
+  }
+
+  &__period {
+    font-size: 10px;
+    color: #5a6478;
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  &__limit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,71,87,0.06);
+    border-radius: 4px;
+    padding: 5px 8px;
+  }
+
+  &__limit-label {
+    font-size: 10px;
+    color: #ff4757;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  &__limit-text {
+    font-size: 11px;
+    color: #d4848a;
+  }
+}
+
+// ─── R* Timeline ─────────────────────────────────────────────────────────────
+.ch13-rstar-timeline {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.ch13-rstar-item {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__period {
+    font-size: 10px;
+    color: #5a6478;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a9eff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__driver {
+    font-size: 10px;
+    color: #8b95a8;
+    line-height: 1.4;
+  }
+}
+
+// ─── R* Model Cards ──────────────────────────────────────────────────────────
+.ch13-rstar-models {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ch13-rstar-model-card {
+  flex: 1;
+  background: rgba(74,158,255,0.06);
+  border: 1px solid rgba(74,158,255,0.15);
+  border-radius: 8px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ch13-rstar-model__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4a9eff;
+}
+
+.ch13-rstar-model__full {
+  font-size: 10px;
+  color: #5a6478;
+}
+
+.ch13-rstar-model__est {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8ecf4;
+  margin-top: 4px;
+}
+
+.ch13-rstar-model__note {
+  font-size: 10px;
+  color: #8b95a8;
+}
+
+// ─── PCE vs CPI Compare ──────────────────────────────────────────────────────
+.ch13-pce-vs-cpi {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ch13-metric-compare-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 12px 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.ch13-metric-compare__title {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8ecf4;
+  margin-bottom: 6px;
+}
+
+.ch13-metric-compare__badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  color: #8b95a8;
+  margin-bottom: 8px;
+
+  &--primary {
+    background: rgba(74,158,255,0.12);
+    color: #4a9eff;
+  }
+}
+
+.ch13-metric-compare__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ch13-metric-compare__item {
+  font-size: 11px;
+  color: #8b95a8;
+  line-height: 1.4;
+}
+
+// ─── AIT Compare Table ───────────────────────────────────────────────────────
+.ch13-compare-table {
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 12px;
+
+  &__header {
+    display: flex;
+    background: rgba(74,158,255,0.08);
+    padding: 8px 10px;
+  }
+
+  &__row {
+    display: flex;
+    padding: 8px 10px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+
+    &--even {
+      background: rgba(255,255,255,0.02);
+    }
+  }
+
+  &__col-label {
+    flex: 0 0 28%;
+    font-size: 11px;
+    color: #8b95a8;
+    font-weight: 600;
+  }
+
+  &__col-old {
+    flex: 1;
+    font-size: 11px;
+    color: #6b7a95;
+    padding-right: 6px;
+  }
+
+  &__col-new {
+    flex: 1;
+    font-size: 11px;
+    color: #4a9eff;
+    padding-left: 6px;
+    border-left: 1px solid rgba(74,158,255,0.15);
+  }
+}
+
+.ch13-compare-table__header .ch13-compare-table__col-label,
+.ch13-compare-table__header .ch13-compare-table__col-old,
+.ch13-compare-table__header .ch13-compare-table__col-new {
+  font-size: 11px;
+  font-weight: 700;
+  color: #e8ecf4;
+}
+
+// ─── Taylor Rule Formula Display ─────────────────────────────────────────────
+.ch13-taylor-formula {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 14px 12px;
+  margin-bottom: 12px;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  &__lhs {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e8ecf4;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__rhs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  &__op {
+    font-size: 16px;
+    font-weight: 700;
+    color: #5a6478;
+  }
+}
+
+.ch13-taylor-term {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 4px;
+
+  &--rstar  { color: #4a9eff; background: rgba(74,158,255,0.12); }
+  &--pi     { color: #f5a623; background: rgba(245,166,35,0.12); }
+  &--gap1   { color: #a855f7; background: rgba(168,85,247,0.12); }
+  &--gap2   { color: #4cd964; background: rgba(76,217,100,0.12); }
+}
+
+.ch13-taylor-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__sym {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    min-width: 70px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  &__def {
+    font-size: 11px;
+    color: #8b95a8;
+  }
+}
+
+// ─── Taylor Variant Selector ─────────────────────────────────────────────────
+.ch13-taylor-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.ch13-taylor-variant {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+
+  &--active {
+    // border and bg applied inline
+  }
+
+  &__name {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8b95a8;
+    margin-bottom: 3px;
+  }
+
+  &__formula {
+    font-size: 11px;
+    color: #5a6478;
+    font-family: monospace;
+  }
+}
+
+// ─── Taylor Calculator ────────────────────────────────────────────────────────
+.ch13-taylor-calc {
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.ch13-taylor-row {
+  margin-bottom: 12px;
+
+  &__label-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8ecf4;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.ch13-taylor-slider-track {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.ch13-taylor-pip {
+  flex: 1;
+  min-width: 28px;
+  padding: 5px 2px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--active {
+    background: rgba(74,158,255,0.2);
+    border-color: rgba(74,158,255,0.5);
+  }
+
+  &--neg.ch13-taylor-pip--active {
+    background: rgba(76,217,100,0.15);
+    border-color: rgba(76,217,100,0.4);
+  }
+
+  &--pos.ch13-taylor-pip--active {
+    background: rgba(255,71,87,0.15);
+    border-color: rgba(255,71,87,0.4);
+  }
+
+  &__label {
+    font-size: 10px;
+    color: #5a6478;
+    font-variant-numeric: tabular-nums;
+
+    .ch13-taylor-pip--active & {
+      color: #4a9eff;
+      font-weight: 700;
+    }
+
+    .ch13-taylor-pip--neg.ch13-taylor-pip--active & {
+      color: #4cd964;
+    }
+
+    .ch13-taylor-pip--pos.ch13-taylor-pip--active & {
+      color: #ff4757;
+    }
+  }
+}
+
+// ─── Taylor Result ────────────────────────────────────────────────────────────
+.ch13-taylor-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+
+  &__block {
+    flex: 1;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &--implied {
+      background: rgba(74,158,255,0.08);
+      border: 1px solid rgba(74,158,255,0.2);
+    }
+
+    &--actual {
+      background: rgba(245,166,35,0.08);
+      border: 1px solid rgba(245,166,35,0.2);
+    }
+  }
+
+  &__label {
+    font-size: 10px;
+    color: #5a6478;
+    text-align: center;
+  }
+
+  &__value {
+    font-size: 22px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+
+    .ch13-taylor-result__block--implied & { color: #4a9eff; }
+    .ch13-taylor-result__block--actual  & { color: #f5a623; }
+  }
+
+  &__vs {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3a4458;
+    flex: 0 0 auto;
+  }
+}
+
+// ─── Taylor Deviation Badge ───────────────────────────────────────────────────
+.ch13-taylor-deviation {
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  &--loose   { background: rgba(255,71,87,0.08);   border: 1px solid rgba(255,71,87,0.2); }
+  &--tight   { background: rgba(76,217,100,0.08); border: 1px solid rgba(76,217,100,0.2); }
+  &--neutral { background: rgba(245,166,35,0.08);  border: 1px solid rgba(245,166,35,0.2); }
+
+  &__val {
+    font-size: 18px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+
+    .ch13-taylor-deviation--loose   & { color: #ff4757; }
+    .ch13-taylor-deviation--tight   & { color: #4cd964; }
+    .ch13-taylor-deviation--neutral & { color: #f5a623; }
+  }
+
+  &__label {
+    font-size: 11px;
+    color: #8b95a8;
+    text-align: center;
+  }
+}
+
+// ─── Taylor History ───────────────────────────────────────────────────────────
+.ch13-taylor-history {
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch13-taylor-hist-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__year {
+    font-size: 11px;
+    font-weight: 700;
+    color: #5a6478;
+  }
+
+  &__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+}
+
+.ch13-taylor-hist-bar {
+  height: 14px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  min-width: 20px;
+
+  &--taylor {
+    background: rgba(74,158,255,0.25);
+    border: 1px solid rgba(74,158,255,0.4);
+  }
+
+  &--fed {
+    background: rgba(245,166,35,0.2);
+    border: 1px solid rgba(245,166,35,0.35);
+  }
+
+  &__val {
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+
+    .ch13-taylor-hist-bar--taylor & { color: #4a9eff; }
+    .ch13-taylor-hist-bar--fed    & { color: #f5a623; }
+  }
+}
+
+.ch13-taylor-hist-legend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  margin-top: 4px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+
+    &--taylor { background: rgba(74,158,255,0.5);  border: 1px solid #4a9eff; }
+    &--fed    { background: rgba(245,166,35,0.4); border: 1px solid #f5a623; }
+  }
+
+  &__text {
+    font-size: 10px;
+    color: #6b7a95;
+  }
+}
+
+// ─── Phillips Curve ──────────────────────────────────────────────────────────
+.ch13-phillips-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ch13-phillips-era {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+
+  &__period {
+    font-size: 11px;
+    font-weight: 700;
+    color: #5a6478;
+    flex: 0 0 68px;
+    padding-top: 2px;
+  }
+
+  &__status {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+
+    &--steep   { background: rgba(255,71,87,0.15);   color: #ff4757; }
+    &--moderate { background: rgba(74,158,255,0.12);  color: #4a9eff; }
+    &--flat    { background: rgba(168,85,247,0.12); color: #a855f7; }
+    &--revival { background: rgba(245,166,35,0.12);  color: #f5a623; }
+  }
+
+  &__desc {
+    flex: 1;
+    font-size: 11px;
+    color: #8b95a8;
+    line-height: 1.5;
+  }
+}
+
+// ─── Indicator Tabs ──────────────────────────────────────────────────────────
+.ch13-ind-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ch13-ind-tab {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  &--active {
+    background: rgba(74,158,255,0.1);
+    border-color: rgba(74,158,255,0.3);
+
+    .ch13-ind-tab__label {
+      color: #4a9eff;
+    }
+
+    .ch13-ind-tab__count {
+      color: #4a9eff;
+      background: rgba(74,158,255,0.15);
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7a95;
+  }
+
+  &__count {
+    font-size: 10px;
+    color: #5a6478;
+    background: rgba(255,255,255,0.06);
+    padding: 1px 6px;
+    border-radius: 8px;
+  }
+}
+
+// ─── Indicator Cards ─────────────────────────────────────────────────────────
+.ch13-ind-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+
+  &--expanded {
+    border-color: rgba(74,158,255,0.25);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  &__emoji {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  &__meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e8ecf4;
+    margin-bottom: 2px;
+  }
+
+  &__freq {
+    display: block;
+    font-size: 10px;
+    color: #5a6478;
+  }
+
+  &__chevron {
+    font-size: 18px;
+    color: #5a6478;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__body {
+    padding: 0 12px 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 0;
+  }
+
+  &__note {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.65;
+    margin-top: 10px;
+  }
+}
+
+// ─── Indicator Signal Rows ───────────────────────────────────────────────────
+.ch13-ind-signal {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+
+  &__item {
+    flex: 1;
+    border-radius: 6px;
+    padding: 8px;
+
+    &.ch13-ind-signal--cut {
+      background: rgba(76,217,100,0.06);
+      border: 1px solid rgba(76,217,100,0.15);
+    }
+
+    &.ch13-ind-signal--hike {
+      background: rgba(255,71,87,0.06);
+      border: 1px solid rgba(255,71,87,0.15);
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 4px;
+
+    .ch13-ind-signal--cut & { color: #4cd964; }
+    .ch13-ind-signal--hike & { color: #ff4757; }
+  }
+
+  &__value {
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+
+    .ch13-ind-signal--cut & { color: #6fd980; }
+    .ch13-ind-signal--hike & { color: #d4848a; }
+  }
+}
+
+// ─── Indicator Hint ──────────────────────────────────────────────────────────
+.ch13-ind-hint {
+  text-align: center;
+  padding: 8px 0 2px;
+
+  &__text {
+    font-size: 11px;
+    color: #3a4458;
+  }
+}
+
+// ─── Scenario Tabs ───────────────────────────────────────────────────────────
+.ch13-scenario-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ch13-scenario-tab {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  &--active {
+    // dynamic styles applied inline
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8b95a8;
+    text-align: center;
+  }
+
+  &__prob {
+    font-size: 11px;
+    color: #5a6478;
+  }
+}
+
+// ─── Scenario Detail ─────────────────────────────────────────────────────────
+.ch13-scenario-detail {
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px;
+
+  &__name {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  &__row {
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #5a6478;
+    margin-bottom: 3px;
+  }
+
+  &__value {
+    display: block;
+    font-size: 12px;
+    color: #c4ccd8;
+    line-height: 1.5;
+  }
+
+  &__assets-title {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #5a6478;
+    margin: 12px 0 8px;
+  }
+}
+
+// ─── Scenario Assets Grid ─────────────────────────────────────────────────────
+.ch13-scenario-assets {
+  display: flex;
+  gap: 6px;
+}
+
+.ch13-scenario-asset {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  &__name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8b95a8;
+    text-align: center;
+  }
+
+  &__view {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__detail {
+    font-size: 10px;
+    color: #5a6478;
+    text-align: center;
+    line-height: 1.3;
+  }
+}
+
+.ch13-scenario-asset--up      { color: #4cd964; }
+.ch13-scenario-asset--down    { color: #ff4757; }
+.ch13-scenario-asset--neutral { color: #f5a623; }
+
+// ─── Super Core PCE ──────────────────────────────────────────────────────────
+.ch13-supercore-card {
+  background: rgba(74,158,255,0.06);
+  border: 1px solid rgba(74,158,255,0.15);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 14px;
+
+  &__formula {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #4a9eff;
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.6;
+  }
+}
+
+.ch13-supercore-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch13-supercore-layer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__bar {
+    height: 8px;
+    border-radius: 4px;
+    flex: 0 0 auto;
+    max-width: 160px;
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #e8ecf4;
+    flex: 0 0 90px;
+  }
+
+  &__note {
+    font-size: 10px;
+    color: #5a6478;
+  }
+}
+
+// ─── Conclusion Cards ─────────────────────────────────────────────────────────
+.ch13-conclusion-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ch13-conclusion-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 14px;
+
+  &__num {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: rgba(74,158,255,0.15);
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+
+  &__title {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+    margin-bottom: 6px;
+  }
+
+  &__body {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.65;
+  }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+.ch13-footer {
+  padding: 16px 12px 32px;
+  text-align: center;
+
+  &__text {
+    font-size: 10px;
+    color: #3a4458;
+  }
+}

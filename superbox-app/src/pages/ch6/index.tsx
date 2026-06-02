@@ -99,6 +99,26 @@ export default function Ch6Page() {
         onSelect={handleSnapshotSelect}
       />
 
+      {/* ── 美元看板跳转入口 ── */}
+      <View
+        className='ch6-dashboard-banner'
+        onClick={() => {
+          Taro.navigateTo({ url: '/pages/subscribe/index?monitor=usd' })
+        }}
+      >
+        <View className='ch6-dashboard-banner__left'>
+          <Text className='ch6-dashboard-banner__icon'>💱</Text>
+          <View>
+            <Text className='ch6-dashboard-banner__title'>美元看板</Text>
+            <Text className='ch6-dashboard-banner__desc'>实时汇率 · DXY走势 · 全球美元流动性</Text>
+          </View>
+        </View>
+        <View className='ch6-dashboard-banner__right'>
+          <Text className='ch6-dashboard-banner__price'>30 EDS</Text>
+          <Text className='ch6-dashboard-banner__arrow'>›</Text>
+        </View>
+      </View>
+
       {/* Slider Inputs */}
       <View className='panel'>
         <Text className='panel-tag'>调整参数</Text>

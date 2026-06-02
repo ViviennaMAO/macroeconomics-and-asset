@@ -197,30 +197,30 @@ export default function Ch1Page() {
       <View className='section'>
         <Text className='section-title'>🚨 衰退概率综合面板</Text>
         <View className='panel ch1-meter-panel'>
-          <View className='ch1-meter-layout'>
+          <View className='ch1-meter-top'>
             <RecessionMeter
               probability={probability}
               signals={meterSignals}
               asOfDate='2024-12'
             />
-            <View className='ch1-meter-aside'>
-              <Text className='ch1-meter-aside__label'>综合评级</Text>
-              <Text className={`ch1-meter-aside__rating ${probability < 30 ? 'rating--low' : probability < 60 ? 'rating--mid' : 'rating--high'}`}>
+            <View className='ch1-meter-rating'>
+              <Text className='ch1-meter-rating__label'>综合评级</Text>
+              <Text className={`ch1-meter-rating__value ${probability < 30 ? 'rating--low' : probability < 60 ? 'rating--mid' : 'rating--high'}`}>
                 {probability < 30 ? '信号混杂' : probability < 60 ? '警惕升温' : '高风险区'}
               </Text>
-              <Text className='ch1-meter-aside__desc'>
-                {probability < 30
-                  ? '收益率曲线正常化，NFCI 宽松，但 LEI 与 PMI 仍偏弱。多指标分歧，难以单一定论。'
-                  : probability < 60
-                  ? '超过半数领先指标发出预警，需密切监测劳动力市场与消费数据。'
-                  : '主要领先指标共振，衰退风险显著上升，建议防御性配置。'}
-              </Text>
-              <View className='ch1-meter-aside__note'>
-                <Text className='ch1-meter-aside__note-text'>
-                  ⚠ 单一指标失误率 13-20%，多指标共振准确率可达 80%+
-                </Text>
-              </View>
             </View>
+          </View>
+          <Text className='ch1-meter-desc'>
+            {probability < 30
+              ? '收益率曲线正常化，NFCI 宽松，但 LEI 与 PMI 仍偏弱。多指标分歧，难以单一定论。'
+              : probability < 60
+              ? '超过半数领先指标发出预警，需密切监测劳动力市场与消费数据。'
+              : '主要领先指标共振，衰退风险显著上升，建议防御性配置。'}
+          </Text>
+          <View className='ch1-meter-note'>
+            <Text className='ch1-meter-note__text'>
+              ⚠ 单一指标失误率 13-20%，多指标共振准确率可达 80%+
+            </Text>
           </View>
         </View>
       </View>

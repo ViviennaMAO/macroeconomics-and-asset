@@ -6,7 +6,7 @@ import { loadProgress, dueReviews, completionRate as calcCompletion } from '../.
 import ProgressCard from '../../components/ProgressCard'
 import './index.scss'
 
-const TOTAL_CHAPTERS = 12
+const TOTAL_CHAPTERS = 13
 
 const NEWS_PLACEHOLDERS = [
   { id: 1, tag: '美联储', title: '鲍威尔：在通胀与就业双重压力下，降息路径仍不明朗', time: '2h ago' },
@@ -60,7 +60,6 @@ export default function HomePage() {
       {/* ── Hero ── */}
       <View className='hero'>
         <Text className='hero__title'>全球宏观经济分析与大类资产研究</Text>
-        <Text className='hero__subtitle'>让陶川的框架 · 在今天的市场上立刻验证</Text>
       </View>
 
       {/* ── Progress Card ── */}

@@ -135,3 +135,806 @@
   line-height: 1.7;
   display: block;
 }
+
+// ─── Section description ────────────────────────────────────────────────────
+.ch7-section-desc {
+  display: block;
+  font-size: 13px;
+  color: #8b95a8;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+// ─── VS Card (Treasury vs Fed) ──────────────────────────────────────────────
+.ch7-versus-card {
+  display: flex;
+  align-items: stretch;
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.ch7-versus-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 10px;
+  gap: 6px;
+}
+
+.ch7-versus-icon {
+  font-size: 28px;
+}
+
+.ch7-versus-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e8ecf4;
+}
+
+.ch7-versus-role {
+  font-size: 11px;
+  color: #5a6478;
+}
+
+.ch7-versus-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.ch7-versus-tag {
+  display: block;
+  font-size: 11px;
+  color: #8b95a8;
+  background: rgba(255,255,255,0.04);
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.ch7-versus-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ch7-versus-vs {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f5a623;
+  background: #1a2035;
+  padding: 4px 6px;
+  border-radius: 4px;
+  position: relative;
+}
+
+// ─── Conflict Card (Supply / Demand) ────────────────────────────────────────
+.ch7-conflict-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.ch7-conflict-row {
+  display: flex;
+  gap: 12px;
+}
+
+.ch7-conflict-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+
+.ch7-conflict--supply {
+  background: rgba(255, 71, 87, 0.08);
+  border: 1px solid rgba(255, 71, 87, 0.15);
+}
+
+.ch7-conflict--demand {
+  background: rgba(74, 158, 255, 0.08);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+}
+
+.ch7-conflict-arrow {
+  font-size: 22px;
+  font-weight: 700;
+  .ch7-conflict--supply & { color: #ff4757; }
+  .ch7-conflict--demand & { color: #4a9eff; }
+}
+
+.ch7-conflict-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8ecf4;
+}
+
+.ch7-conflict-detail {
+  font-size: 11px;
+  color: #8b95a8;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.ch7-conflict-result {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(245, 166, 35, 0.08);
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ch7-conflict-result-text {
+  font-size: 13px;
+  color: #f5a623;
+  font-weight: 600;
+}
+
+// ─── Data Grid ──────────────────────────────────────────────────────────────
+.ch7-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ch7-data-item {
+  background: #141927;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 12px;
+  text-align: center;
+}
+
+.ch7-data-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e8ecf4;
+  font-variant-numeric: tabular-nums;
+}
+
+.ch7-data-label {
+  display: block;
+  font-size: 11px;
+  color: #5a6478;
+  margin-top: 4px;
+}
+
+// ─── Chain Card (Rate Transmission) ─────────────────────────────────────────
+.ch7-chain-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 16px;
+}
+
+.ch7-chain-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ch7-chain-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(74, 158, 255, 0.15);
+  color: #4a9eff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ch7-chain-content {
+  flex: 1;
+}
+
+.ch7-chain-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8ecf4;
+}
+
+.ch7-chain-desc {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  margin-top: 2px;
+}
+
+.ch7-chain-arrow {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #5a6478;
+  margin: 4px 0 4px 6px;
+}
+
+// ─── Inflation Card ─────────────────────────────────────────────────────────
+.ch7-inflation-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 16px;
+}
+
+.ch7-inflation-intro {
+  display: block;
+  font-size: 13px;
+  color: #8b95a8;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.ch7-inflation-channels {
+  display: flex;
+  gap: 8px;
+}
+
+.ch7-inflation-ch {
+  flex: 1;
+  background: rgba(255, 71, 87, 0.06);
+  border: 1px solid rgba(255, 71, 87, 0.12);
+  border-radius: 8px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ch7-inflation-ch-icon {
+  font-size: 20px;
+}
+
+.ch7-inflation-ch-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e8ecf4;
+  text-align: center;
+}
+
+.ch7-inflation-ch-desc {
+  font-size: 10px;
+  color: #8b95a8;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.ch7-inflation-timeline {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.ch7-inflation-tl-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8ecf4;
+  margin-bottom: 8px;
+}
+
+.ch7-inflation-tl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ch7-inflation-tl-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: #f5a623;
+  flex-shrink: 0;
+  width: 52px;
+}
+
+.ch7-inflation-tl-text {
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.5;
+}
+
+// ─── Term Premium Card ──────────────────────────────────────────────────────
+.ch7-tp-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 16px;
+}
+
+.ch7-tp-formula {
+  padding: 12px;
+  background: rgba(74, 158, 255, 0.06);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ch7-tp-formula-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a9eff;
+}
+
+.ch7-tp-example {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.ch7-tp-factors {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.ch7-tp-factors-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8ecf4;
+  margin-bottom: 8px;
+}
+
+.ch7-tp-factor {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ch7-tp-factor-dot {
+  font-size: 8px;
+  color: #f5a623;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.ch7-tp-factor-text {
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.5;
+}
+
+// ─── SVB Case Card ──────────────────────────────────────────────────────────
+.ch7-case-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 71, 87, 0.15);
+  padding: 16px;
+}
+
+.ch7-case-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 12px;
+  border-left: 2px solid rgba(255, 71, 87, 0.25);
+}
+
+.ch7-case-step {
+  padding: 0 0 14px 12px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -17px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4757;
+  }
+}
+
+.ch7-case-step-date {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff4757;
+}
+
+.ch7-case-step-text {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.6;
+  margin-top: 2px;
+}
+
+.ch7-case-lesson {
+  margin-top: 4px;
+  padding: 10px 12px;
+  background: rgba(245, 166, 35, 0.08);
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  border-radius: 8px;
+}
+
+.ch7-case-lesson-text {
+  display: block;
+  font-size: 12px;
+  color: #f5a623;
+  line-height: 1.6;
+}
+
+// ─── Management Card ────────────────────────────────────────────────────────
+.ch7-mgmt-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 16px;
+}
+
+.ch7-mgmt-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ch7-mgmt-bullet {
+  font-size: 12px;
+  color: #4a9eff;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ch7-mgmt-text {
+  font-size: 13px;
+  color: #8b95a8;
+  line-height: 1.6;
+}
+
+// ─── Compare Card (US vs Japan) ─────────────────────────────────────────────
+.ch7-compare-card {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.ch7-compare-header {
+  display: flex;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ch7-compare-header-cell {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8ecf4;
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+  }
+}
+
+.ch7-compare-row {
+  display: flex;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.ch7-compare-label {
+  flex: 1;
+  font-size: 12px;
+  color: #5a6478;
+}
+
+.ch7-compare-val {
+  flex: 1;
+  font-size: 13px;
+  color: #e8ecf4;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ch7-compare--high {
+  color: #ff4757;
+}
+
+.ch7-compare--low {
+  color: #4cd964;
+}
+
+.ch7-compare-insight {
+  padding: 12px 14px;
+}
+
+.ch7-compare-insight-text {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.7;
+}
+
+// ─── Auction Metric Guide ───────────────────────────────────────────────────
+.ch7-metric-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ch7-metric-guide-item {
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px;
+}
+
+.ch7-metric-guide-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ch7-metric-guide-icon {
+  font-size: 16px;
+}
+
+.ch7-metric-guide-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e8ecf4;
+}
+
+.ch7-metric-guide-desc {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.ch7-metric-guide-note {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: #f5a623;
+  background: rgba(245, 166, 35, 0.06);
+  border-left: 2px solid rgba(245, 166, 35, 0.4);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+.ch7-metric-guide-signals {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ch7-signal-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.ch7-signal-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  &.ch7-signal--up {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.12);
+  }
+
+  &.ch7-signal--down {
+    color: #4cd964;
+    background: rgba(76, 217, 100, 0.12);
+  }
+}
+
+.ch7-signal-text {
+  flex: 1;
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.5;
+}
+
+// ─── Bid-to-Cover Scale ─────────────────────────────────────────────────────
+.ch7-btc-scale {
+  display: flex;
+  gap: 6px;
+}
+
+.ch7-btc-band {
+  flex: 1;
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &--weak {
+    background: rgba(255, 71, 87, 0.08);
+    border: 1px solid rgba(255, 71, 87, 0.18);
+  }
+
+  &--ok {
+    background: rgba(168, 179, 207, 0.06);
+    border: 1px solid rgba(168, 179, 207, 0.18);
+  }
+
+  &--good {
+    background: rgba(76, 217, 100, 0.08);
+    border: 1px solid rgba(76, 217, 100, 0.18);
+  }
+}
+
+.ch7-btc-range {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+
+  .ch7-btc-band--weak & { color: #ff4757; }
+  .ch7-btc-band--ok & { color: #a8b3cf; }
+  .ch7-btc-band--good & { color: #4cd964; }
+}
+
+.ch7-btc-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e8ecf4;
+}
+
+.ch7-btc-impact {
+  display: block;
+  font-size: 10px;
+  color: #5a6478;
+  line-height: 1.4;
+}
+
+// ─── Bidder Types ───────────────────────────────────────────────────────────
+.ch7-bidder-types {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch7-bidder-type {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ch7-bidder-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+
+  &--direct { background: #4a9eff; }
+  &--indirect { background: #f5a623; }
+  &--dealer { background: #5a6478; }
+}
+
+.ch7-bidder-info {
+  flex: 1;
+}
+
+.ch7-bidder-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8ecf4;
+}
+
+.ch7-bidder-desc {
+  display: block;
+  font-size: 11px;
+  color: #8b95a8;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+// ─── Signal Scenarios Card ──────────────────────────────────────────────────
+.ch7-signals-card {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.ch7-signals-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e8ecf4;
+  margin-bottom: 12px;
+}
+
+.ch7-signal-scenario {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+
+.ch7-signal-scenario-tag {
+  display: inline-block;
+  width: fit-content;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+
+  &.ch7-signal-scenario--bull {
+    color: #4cd964;
+    background: rgba(76, 217, 100, 0.12);
+  }
+
+  &.ch7-signal-scenario--bear {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.12);
+  }
+
+  &.ch7-signal-scenario--watch {
+    color: #f5a623;
+    background: rgba(245, 166, 35, 0.12);
+  }
+
+  &.ch7-signal-scenario--macro {
+    color: #4a9eff;
+    background: rgba(74, 158, 255, 0.12);
+  }
+}
+
+.ch7-signal-scenario-text {
+  display: block;
+  font-size: 12px;
+  color: #8b95a8;
+  line-height: 1.7;
+}

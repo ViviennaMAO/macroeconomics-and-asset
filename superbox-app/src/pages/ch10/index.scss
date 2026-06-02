@@ -6,6 +6,65 @@
   background: #0a0e1a;
 }
 
+// ─── 黄金看板跳转横幅 ────────────────────────────────────────────────────────
+.ch10-dashboard-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 12px 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.06) 100%);
+  border: 1px solid rgba(245,166,35,0.35);
+  border-radius: 12px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__icon {
+    font-size: 26px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f5a623;
+    margin-bottom: 2px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 11px;
+    color: #a07828;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 13px;
+    font-weight: 700;
+    color: #f5a623;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.35);
+    padding: 3px 9px;
+    border-radius: 10px;
+  }
+
+  &__arrow {
+    font-size: 24px;
+    font-weight: 300;
+    color: #f5a623;
+    opacity: 0.7;
+  }
+}
+
 .ch10-val--gold {
   color: #f5a623;
 }

@@ -1,0 +1,269 @@
+.auction-board {
+  margin: 0;
+  background: #141927;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  &__tab {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5a6478;
+    position: relative;
+    transition: color 0.2s;
+
+    &--active {
+      color: #4a9eff;
+      font-weight: 600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20%;
+        right: 20%;
+        height: 2px;
+        background: #4a9eff;
+        border-radius: 1px;
+      }
+    }
+  }
+
+  &__loading {
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  &__loading-text {
+    font-size: 13px;
+    color: #5a6478;
+    display: block;
+  }
+
+  &__retry {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #4a9eff;
+    background: rgba(74, 158, 255, 0.08);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    border-radius: 6px;
+  }
+
+  &__summary {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(74, 158, 255, 0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  &__summary-item {
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+  }
+
+  &__summary-label {
+    display: block;
+    font-size: 10px;
+    color: #5a6478;
+    margin-bottom: 4px;
+  }
+
+  &__summary-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e8ecf4;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__summary-hint {
+    display: block;
+    font-size: 10px;
+    color: #8b95a8;
+    margin-top: 2px;
+  }
+
+  &__summary--good { color: #4cd964; }
+  &__summary--ok { color: #e8ecf4; }
+  &__summary--weak { color: #ff4757; }
+
+  &__list {
+    padding: 4px 0;
+  }
+
+  &__footer {
+    display: block;
+    font-size: 10px;
+    color: #3a4458;
+    text-align: center;
+    padding: 8px 12px 10px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+}
+
+// ─── Auction Item ───────────────────────────────────────────────────────────
+.auction-item {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__term-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__type-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+
+    &--note {
+      background: rgba(74, 158, 255, 0.12);
+      color: #4a9eff;
+    }
+
+    &--bond {
+      background: rgba(168, 85, 247, 0.12);
+      color: #a855f7;
+    }
+  }
+
+  &__term {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e8ecf4;
+  }
+
+  &__date {
+    font-size: 11px;
+    color: #5a6478;
+  }
+
+  // ─── Metrics row ────────────────────────────────────────────────────────
+  &__metrics {
+    display: flex;
+    gap: 6px;
+  }
+
+  &__metric {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  &__metric-label {
+    font-size: 10px;
+    color: #5a6478;
+  }
+
+  &__metric-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8ecf4;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__metric--yield {
+    color: #f5a623;
+  }
+
+  &__metric--good {
+    color: #4cd964;
+  }
+
+  &__metric--ok {
+    color: #e8ecf4;
+  }
+
+  &__metric--weak {
+    color: #ff4757;
+  }
+
+  &__metric--upcoming {
+    color: #4a9eff;
+    font-size: 12px;
+  }
+
+  // ─── Bidder breakdown bar ───────────────────────────────────────────────
+  &__bidders {
+    margin-top: 8px;
+  }
+
+  &__bar-track {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+  }
+
+  &__bar-seg {
+    height: 100%;
+  }
+
+  &__bar--direct {
+    background: #4a9eff;
+  }
+
+  &__bar--indirect {
+    background: #f5a623;
+  }
+
+  &__bar--dealer {
+    background: #5a6478;
+  }
+
+  &__bar-legend {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+    justify-content: center;
+  }
+
+  &__legend-item {
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__legend--direct {
+    color: #4a9eff;
+  }
+
+  &__legend--indirect {
+    color: #f5a623;
+  }
+
+  &__legend--dealer {
+    color: #5a6478;
+  }
+}

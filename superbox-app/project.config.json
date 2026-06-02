@@ -4,7 +4,7 @@
 	"description": "全球宏观经济分析与大类资产研究 · 互动学习",
 	"appid": "mp8l3nracsix91cs",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"enhance": false,
 		"compileHotReLoad": false,

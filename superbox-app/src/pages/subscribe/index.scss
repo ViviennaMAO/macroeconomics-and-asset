@@ -1,0 +1,530 @@
+// ─── Subscribe Page ──────────────────────────────────────────────────────────
+
+.sub-page {
+  background: #0a0e1a;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+// ─── Hero ────────────────────────────────────────────────────────────────────
+.sub-hero {
+  padding: 32px 16px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &--gold {
+    background: linear-gradient(160deg, rgba(245,166,35,0.18) 0%, #0a0e1a 75%);
+  }
+  &--usd {
+    background: linear-gradient(160deg, rgba(74,158,255,0.18) 0%, #0a0e1a 75%);
+  }
+
+  &__emoji {
+    display: block;
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    color: #e8ecf4;
+    margin-bottom: 6px;
+  }
+
+  &__tagline {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+  }
+
+  &__badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 12px;
+    background: rgba(76,217,100,0.12);
+    border: 1px solid rgba(76,217,100,0.3);
+    border-radius: 12px;
+  }
+
+  &__badge-text {
+    font-size: 11px;
+    color: #4cd964;
+    font-weight: 600;
+  }
+}
+
+// ─── Section ────────────────────────────────────────────────────────────────
+.sub-section {
+  margin: 14px 12px 0;
+
+  &__label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+}
+
+// ─── Preview Mockups ────────────────────────────────────────────────────────
+.sub-preview-scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.sub-preview-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 4px 4px 8px;
+}
+
+.sub-preview-hint {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: #3a4458;
+  margin-top: 4px;
+}
+
+// Generic mockup phone-screen card
+.sub-mockup {
+  display: inline-flex;
+  flex-direction: column;
+  width: 230px;
+  background: #141927;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 12px;
+  flex-shrink: 0;
+
+  &__bar {
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 12px;
+  }
+
+  &__bar-text {
+    font-size: 12px;
+    color: #8b95a8;
+    font-weight: 600;
+  }
+
+  &__gauge {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6px 0 10px;
+    padding-top: 4px;
+  }
+
+  &__gauge-ring {
+    width: 120px;
+    height: 60px;
+    border-radius: 60px 60px 0 0;
+    border: 8px solid;
+    border-bottom: none;
+    margin-bottom: -2px;
+
+    &--gold { border-color: #f5a623; }
+    &--usd { border-color: #4a9eff; }
+  }
+
+  &__gauge-val {
+    position: absolute;
+    top: 20px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #e8ecf4;
+  }
+
+  &__gauge-label {
+    font-size: 11px;
+    color: #5a6478;
+    margin-top: 4px;
+  }
+
+  &__pill {
+    align-self: center;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+
+    &--long {
+      background: rgba(76,217,100,0.12);
+      border: 1px solid rgba(76,217,100,0.3);
+    }
+
+    &--flat {
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.3);
+    }
+  }
+
+  &__pill-text {
+    font-size: 11px;
+    font-weight: 700;
+
+    .sub-mockup__pill--long & { color: #4cd964; }
+    .sub-mockup__pill--flat & { color: #f5a623; }
+  }
+
+  &__row {
+    display: flex;
+    gap: 6px;
+  }
+
+  &__cell {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__cell-label {
+    font-size: 10px;
+    color: #5a6478;
+  }
+
+  &__cell-val {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e8ecf4;
+    font-variant-numeric: tabular-nums;
+
+    &--gold { color: #f5a623; }
+    &--usd  { color: #4a9eff; }
+  }
+}
+
+// ─── Matrix Mockup ───────────────────────────────────────────────────────────
+.sub-matrix {
+  display: inline-flex;
+  flex-direction: column;
+  width: 230px;
+  background: #141927;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 12px;
+  flex-shrink: 0;
+
+  &__title {
+    text-align: center;
+    font-size: 12px;
+    color: #8b95a8;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+
+  &__cell {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    aspect-ratio: 1.4 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--center {
+      border-color: rgba(74,158,255,0.5);
+      background: rgba(74,158,255,0.08);
+    }
+
+    &--long {
+      background: rgba(76,217,100,0.1);
+    }
+
+    &--short {
+      background: rgba(255,71,87,0.1);
+    }
+  }
+
+  &__cell-text {
+    font-size: 9px;
+    font-weight: 700;
+    color: #c4ccd8;
+
+    .sub-matrix__cell--long & { color: #4cd964; }
+    .sub-matrix__cell--short & { color: #ff4757; }
+  }
+}
+
+// ─── Allocation Mockup ───────────────────────────────────────────────────────
+.sub-alloc {
+  display: inline-flex;
+  flex-direction: column;
+  width: 280px;
+  background: #141927;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 12px;
+  flex-shrink: 0;
+
+  &__title {
+    text-align: center;
+    font-size: 12px;
+    color: #8b95a8;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__cols {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__col {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+
+    &--up {
+      background: rgba(76,217,100,0.05);
+      border: 1px solid rgba(76,217,100,0.15);
+    }
+
+    &--down {
+      background: rgba(255,71,87,0.05);
+      border: 1px solid rgba(255,71,87,0.15);
+    }
+  }
+
+  &__col-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+
+    .sub-alloc__col--up & { color: #4cd964; }
+    .sub-alloc__col--down & { color: #ff4757; }
+  }
+
+  &__item {
+    margin-bottom: 7px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__item-top {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__item-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #e8ecf4;
+  }
+
+  &__item-tag {
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(74,158,255,0.12);
+    color: #4a9eff;
+    font-weight: 600;
+  }
+
+  &__item-note {
+    display: block;
+    font-size: 10px;
+    color: #5a6478;
+    margin-top: 1px;
+  }
+}
+
+// ─── Feature Cards ───────────────────────────────────────────────────────────
+.sub-feature-card {
+  background: #141927;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 14px;
+  margin-bottom: 8px;
+
+  &--gold {
+    border-left: 3px solid #f5a623;
+  }
+
+  &--usd {
+    border-left: 3px solid #4a9eff;
+  }
+
+  &__title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8ecf4;
+    margin-bottom: 6px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  &__bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__bullet {
+    font-size: 11px;
+    color: #6b7a95;
+    line-height: 1.5;
+  }
+}
+
+// ─── Pricing Card ────────────────────────────────────────────────────────────
+.sub-price-card {
+  background: #141927;
+  border-radius: 14px;
+  padding: 18px 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+
+  &--gold {
+    background: linear-gradient(160deg, rgba(245,166,35,0.08) 0%, #141927 60%);
+    border-color: rgba(245,166,35,0.25);
+  }
+
+  &--usd {
+    background: linear-gradient(160deg, rgba(74,158,255,0.08) 0%, #141927 60%);
+    border-color: rgba(74,158,255,0.25);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #c4ccd8;
+  }
+
+  &__price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  &__currency {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8ecf4;
+    margin-left: 4px;
+
+    .sub-price-card--gold & { color: #f5a623; }
+    .sub-price-card--usd  & { color: #4a9eff; }
+  }
+
+  &__amount {
+    font-size: 32px;
+    font-weight: 800;
+    color: #e8ecf4;
+    line-height: 1;
+
+    .sub-price-card--gold & { color: #f5a623; }
+    .sub-price-card--usd  & { color: #4a9eff; }
+  }
+
+  &__unit {
+    font-size: 11px;
+    color: #8b95a8;
+    margin-left: 6px;
+  }
+
+  &__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  &__benefit {
+    font-size: 12px;
+    color: #8b95a8;
+    line-height: 1.5;
+  }
+
+  &__footer {
+    display: block;
+    font-size: 10px;
+    color: #5a6478;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+}
+
+// ─── CTA Button ──────────────────────────────────────────────────────────────
+.sub-cta-btn {
+  padding: 14px 0;
+  border-radius: 10px;
+  text-align: center;
+  transition: opacity 0.2s;
+
+  &--gold {
+    background: linear-gradient(135deg, #f5a623 0%, #e08e0a 100%);
+  }
+
+  &--usd {
+    background: linear-gradient(135deg, #4a9eff 0%, #2563eb 100%);
+  }
+
+  &--loading {
+    opacity: 0.7;
+  }
+
+  &__text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+.sub-error {
+  display: block;
+  font-size: 11px;
+  color: #ff4757;
+  text-align: center;
+  margin-top: 8px;
+}
+
+// ─── Trust Footer ────────────────────────────────────────────────────────────
+.sub-trust {
+  padding: 24px 16px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__line {
+    font-size: 10px;
+    color: #3a4458;
+  }
+}

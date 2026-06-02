@@ -51,6 +51,23 @@ const GOLD_PRICE_HISTORY: { date: string; price: number }[] = [
   { date: '2024-10', price: 2730 },
   { date: '2024-11', price: 2650 },
   { date: '2024-12', price: 2630 },
+  { date: '2025-01', price: 2800 },
+  { date: '2025-02', price: 2860 },
+  { date: '2025-03', price: 3000 },
+  { date: '2025-04', price: 3250 },
+  { date: '2025-05', price: 3300 },
+  { date: '2025-06', price: 3350 },
+  { date: '2025-07', price: 3350 },
+  { date: '2025-08', price: 3300 },
+  { date: '2025-09', price: 3650 },
+  { date: '2025-10', price: 4000 },
+  { date: '2025-11', price: 4150 },
+  { date: '2025-12', price: 4500 },
+  { date: '2026-01', price: 5400 },
+  { date: '2026-02', price: 4950 },
+  { date: '2026-03', price: 4600 },
+  { date: '2026-04', price: 4600 },
+  { date: '2026-05', price: 4475 },
 ]
 
 const REAL_RATE_HISTORY: { date: string; realRate: number }[] = [
@@ -90,6 +107,23 @@ const REAL_RATE_HISTORY: { date: string; realRate: number }[] = [
   { date: '2024-10', realRate:  1.9 },
   { date: '2024-11', realRate:  2.1 },
   { date: '2024-12', realRate:  2.2 },
+  { date: '2025-01', realRate:  2.1 },
+  { date: '2025-02', realRate:  2.0 },
+  { date: '2025-03', realRate:  1.9 },
+  { date: '2025-04', realRate:  1.9 },
+  { date: '2025-05', realRate:  1.8 },
+  { date: '2025-06', realRate:  1.9 },
+  { date: '2025-07', realRate:  2.0 },
+  { date: '2025-08', realRate:  2.0 },
+  { date: '2025-09', realRate:  1.9 },
+  { date: '2025-10', realRate:  2.0 },
+  { date: '2025-11', realRate:  2.1 },
+  { date: '2025-12', realRate:  2.1 },
+  { date: '2026-01', realRate:  2.0 },
+  { date: '2026-02', realRate:  2.1 },
+  { date: '2026-03', realRate:  2.2 },
+  { date: '2026-04', realRate:  2.1 },
+  { date: '2026-05', realRate:  2.07 },
 ]
 
 type ModalState =
@@ -215,6 +249,27 @@ export default function Ch10Page() {
           }))
         }}
       />
+
+      {/* ── 黄金看板跳转入口 ── */}
+      <View
+        className='ch10-dashboard-banner'
+        onClick={() => {
+          // 始终先进订阅/预览页；订阅过用户在该页一键打开外部小程序
+          Taro.navigateTo({ url: '/pages/subscribe/index?monitor=gold' })
+        }}
+      >
+        <View className='ch10-dashboard-banner__left'>
+          <Text className='ch10-dashboard-banner__icon'>📊</Text>
+          <View>
+            <Text className='ch10-dashboard-banner__title'>黄金看板</Text>
+            <Text className='ch10-dashboard-banner__desc'>实时行情 · 多维指标 · 深度分析</Text>
+          </View>
+        </View>
+        <View className='ch10-dashboard-banner__right'>
+          <Text className='ch10-dashboard-banner__price'>30 EDS</Text>
+          <Text className='ch10-dashboard-banner__arrow'>›</Text>
+        </View>
+      </View>
 
       {/* Gold Price History Chart */}
       <View className='section'>

@@ -1,0 +1,45 @@
+name: Update market data
+
+# Refreshes superbox-app/public/data/fred-latest.json from FRED + stooq,
+# then commits the change so the mini-program's live CDN picks it up.
+
+on:
+  schedule:
+    # Every day at 06:30 UTC (after US markets close & FRED publishes).
+    - cron: '30 6 * * *'
+  workflow_dispatch: {}   # allow manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write          # needed to push the updated JSON back
+
+concurrency:
+  group: update-market-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest market data
+        run: node superbox-app/scripts/update-fred-data.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "market-data-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- superbox-app/public/data/fred-latest.json; then
+            echo "No data change — nothing to commit."
+          else
+            git add superbox-app/public/data/fred-latest.json
+            git commit -m "chore(data): auto-update market snapshot [skip ci]"
+            git push
+            echo "Pushed updated market snapshot."
+          fi

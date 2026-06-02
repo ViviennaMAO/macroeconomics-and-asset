@@ -19,6 +19,8 @@ export default defineAppConfig({
     'pages/ch10/index',
     'pages/ch11/index',
     'pages/ch12/index',
+    'pages/ch13/index',
+    'pages/subscribe/index',
   ],
   window: {
     navigationBarBackgroundColor: '#0a0e1a',
