@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-04T10:24:46.339Z",
+  "fetchedAt": "2026-06-05T10:30:32.012Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -49,9 +49,9 @@
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.63,
-      "change": 0.01,
-      "date": "2026-05-29",
+      "value": 3.61,
+      "change": -0.02,
+      "date": "2026-06-03",
       "prevDate": null,
       "chapter": 11
     },
@@ -94,9 +94,9 @@
     "WALCL": {
       "id": "WALCL",
       "label": "Fed资产负债表(T$)",
-      "value": 6.7,
+      "value": 6.71,
       "change": -0.02,
-      "date": "2026-05-27",
+      "date": "2026-06-03",
       "prevDate": null,
       "chapter": 11
     },
@@ -112,18 +112,18 @@
     "DTWEXBGS": {
       "id": "DTWEXBGS",
       "label": "美元指数(DXY)",
-      "value": 99.27,
-      "change": -0.04,
-      "date": "2026-06-04",
+      "value": null,
+      "change": null,
+      "date": "d=4",
       "prevDate": null,
       "chapter": 6
     },
     "GOLDAMGBD228NLBM": {
       "id": "GOLDAMGBD228NLBM",
       "label": "黄金现货价格($/oz)",
-      "value": 4473,
-      "change": 12,
-      "date": "2026-06-04",
+      "value": 4465,
+      "change": -8,
+      "date": "2026-06-05",
       "prevDate": null,
       "chapter": 10
     },
