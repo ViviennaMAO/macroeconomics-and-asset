@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-11T11:08:01.552Z",
+  "fetchedAt": "2026-06-12T10:47:35.356Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -49,9 +49,9 @@
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.6,
-      "change": -0.03,
-      "date": "2026-06-09",
+      "value": 3.59,
+      "change": -0.01,
+      "date": "2026-06-10",
       "prevDate": null,
       "chapter": 11
     },
@@ -94,9 +94,9 @@
     "WALCL": {
       "id": "WALCL",
       "label": "Fed资产负债表(T$)",
-      "value": 6.71,
+      "value": 6.73,
       "change": -0.02,
-      "date": "2026-06-03",
+      "date": "2026-06-10",
       "prevDate": null,
       "chapter": 11
     },
@@ -184,9 +184,9 @@
     "NFCI": {
       "id": "NFCI",
       "label": "Fed金融压力指数",
-      "value": -0.49,
-      "change": 0.01,
-      "date": "2026-05-29",
+      "value": -0.51,
+      "change": 0,
+      "date": "2026-06-05",
       "prevDate": null,
       "chapter": 1
     },
