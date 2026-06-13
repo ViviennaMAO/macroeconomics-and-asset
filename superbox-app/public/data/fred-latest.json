@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-12T10:47:35.356Z",
+  "fetchedAt": "2026-06-13T09:42:03.267Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -49,9 +49,9 @@
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.59,
-      "change": -0.01,
-      "date": "2026-06-10",
+      "value": 3.6,
+      "change": 0.01,
+      "date": "2026-06-11",
       "prevDate": null,
       "chapter": 11
     },
@@ -157,9 +157,9 @@
     "ICSA": {
       "id": "ICSA",
       "label": "初请失业金人数",
-      "value": 225000,
-      "change": 13000,
-      "date": "2026-05-30",
+      "value": 229000,
+      "change": 4000,
+      "date": "2026-06-06",
       "prevDate": null,
       "chapter": 1
     },
