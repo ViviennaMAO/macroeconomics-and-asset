@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-13T09:42:03.267Z",
+  "fetchedAt": "2026-06-14T10:02:06.023Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -76,9 +76,9 @@
     "T10YIE": {
       "id": "T10YIE",
       "label": "10年盈亏平衡通胀",
-      "value": 2.4,
+      "value": 2.31,
       "change": 0.02,
-      "date": "2026-06-01",
+      "date": "2026-06-12",
       "prevDate": null,
       "chapter": 10
     },
@@ -139,9 +139,9 @@
     "_realRate10y": {
       "id": "_realRate10y",
       "label": "10年实际利率",
-      "value": 2.07,
+      "value": 2.16,
       "change": null,
-      "date": "2026-05-29",
+      "date": "2026-06-11",
       "prevDate": null,
       "chapter": 10
     },
