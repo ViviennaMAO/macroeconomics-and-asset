@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-15T12:47:51.804Z",
+  "fetchedAt": "2026-06-16T11:40:22.169Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -49,9 +49,9 @@
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.6,
-      "change": 0.01,
-      "date": "2026-06-11",
+      "value": 3.65,
+      "change": 0.05,
+      "date": "2026-06-12",
       "prevDate": null,
       "chapter": 11
     },
@@ -166,9 +166,9 @@
     "INDPRO": {
       "id": "INDPRO",
       "label": "工业生产指数同比",
-      "value": 102.5,
-      "change": 0.7,
-      "date": "2026-04-01",
+      "value": 102.6,
+      "change": 0.1,
+      "date": "2026-05-01",
       "prevDate": null,
       "chapter": 1
     },
