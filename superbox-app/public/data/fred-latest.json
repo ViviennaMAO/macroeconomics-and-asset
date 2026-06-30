@@ -1,57 +1,57 @@
 {
-  "fetchedAt": "2026-06-29T11:30:30.137Z",
+  "fetchedAt": "2026-06-30T10:06:07.167Z",
   "series": {
     "DFF": {
       "id": "DFF",
       "label": "Fed基准利率",
       "value": 3.63,
       "change": 0,
-      "date": "2026-06-25",
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 11
     },
     "DGS2": {
       "id": "DGS2",
       "label": "2年期国债收益率",
-      "value": 4.09,
+      "value": 4.07,
       "change": -0.02,
-      "date": "2026-06-25",
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 7
     },
     "DGS10": {
       "id": "DGS10",
       "label": "10年期国债收益率",
-      "value": 4.4,
-      "change": -0.01,
-      "date": "2026-06-25",
+      "value": 4.38,
+      "change": -0.02,
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 7
     },
     "DGS30": {
       "id": "DGS30",
       "label": "30年期国债收益率",
-      "value": 4.86,
-      "change": 0,
-      "date": "2026-06-25",
+      "value": 4.87,
+      "change": 0.01,
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 7
     },
     "T10Y2Y": {
       "id": "T10Y2Y",
       "label": "2s10s利差",
-      "value": 0.31,
-      "change": 0,
-      "date": "2026-06-26",
+      "value": 0.28,
+      "change": -0.03,
+      "date": "2026-06-29",
       "prevDate": null,
       "chapter": 7
     },
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.64,
-      "change": 0.02,
-      "date": "2026-06-25",
+      "value": 3.62,
+      "change": -0.02,
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 11
     },
@@ -76,9 +76,9 @@
     "T10YIE": {
       "id": "T10YIE",
       "label": "10年盈亏平衡通胀",
-      "value": 2.2,
-      "change": -0.01,
-      "date": "2026-06-26",
+      "value": 2.22,
+      "change": 0.02,
+      "date": "2026-06-29",
       "prevDate": null,
       "chapter": 10
     },
@@ -139,9 +139,9 @@
     "_realRate10y": {
       "id": "_realRate10y",
       "label": "10年实际利率",
-      "value": 2.19,
+      "value": 2.18,
       "change": null,
-      "date": "2026-06-25",
+      "date": "2026-06-26",
       "prevDate": null,
       "chapter": 10
     },
@@ -175,9 +175,9 @@
     "T10Y3M": {
       "id": "T10Y3M",
       "label": "10年-3月利差",
-      "value": 0.55,
-      "change": -0.01,
-      "date": "2026-06-26",
+      "value": 0.51,
+      "change": -0.04,
+      "date": "2026-06-29",
       "prevDate": null,
       "chapter": 1
     },
