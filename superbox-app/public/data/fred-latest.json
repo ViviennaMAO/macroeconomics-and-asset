@@ -1,57 +1,57 @@
 {
-  "fetchedAt": "2026-07-23T09:05:30.518Z",
+  "fetchedAt": "2026-07-24T09:02:02.546Z",
   "series": {
     "DFF": {
       "id": "DFF",
       "label": "Fed基准利率",
       "value": 3.63,
       "change": 0,
-      "date": "2026-07-21",
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 11
     },
     "DGS2": {
       "id": "DGS2",
       "label": "2年期国债收益率",
-      "value": 4.26,
+      "value": 4.31,
       "change": 0.05,
-      "date": "2026-07-21",
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 7
     },
     "DGS10": {
       "id": "DGS10",
       "label": "10年期国债收益率",
-      "value": 4.63,
-      "change": 0.03,
-      "date": "2026-07-21",
+      "value": 4.67,
+      "change": 0.04,
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 7
     },
     "DGS30": {
       "id": "DGS30",
       "label": "30年期国债收益率",
-      "value": 5.13,
+      "value": 5.15,
       "change": 0.02,
-      "date": "2026-07-21",
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 7
     },
     "T10Y2Y": {
       "id": "T10Y2Y",
       "label": "2s10s利差",
-      "value": 0.36,
-      "change": -0.01,
-      "date": "2026-07-22",
+      "value": 0.34,
+      "change": -0.02,
+      "date": "2026-07-23",
       "prevDate": null,
       "chapter": 7
     },
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.61,
-      "change": 0.04,
-      "date": "2026-07-21",
+      "value": 3.62,
+      "change": 0.01,
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 11
     },
@@ -77,8 +77,8 @@
       "id": "T10YIE",
       "label": "10年盈亏平衡通胀",
       "value": 2.28,
-      "change": 0.02,
-      "date": "2026-07-22",
+      "change": 0,
+      "date": "2026-07-23",
       "prevDate": null,
       "chapter": 10
     },
@@ -94,9 +94,9 @@
     "WALCL": {
       "id": "WALCL",
       "label": "Fed资产负债表(T$)",
-      "value": 6.74,
+      "value": 6.75,
       "change": -0.02,
-      "date": "2026-07-15",
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 11
     },
@@ -130,7 +130,7 @@
     "_spread2s10s": {
       "id": "_spread2s10s",
       "label": "2s10s利差(bps)",
-      "value": 37,
+      "value": 36,
       "change": null,
       "date": "2026-05-29",
       "prevDate": null,
@@ -139,9 +139,9 @@
     "_realRate10y": {
       "id": "_realRate10y",
       "label": "10年实际利率",
-      "value": 2.37,
+      "value": 2.39,
       "change": null,
-      "date": "2026-07-21",
+      "date": "2026-07-22",
       "prevDate": null,
       "chapter": 10
     },
@@ -157,9 +157,9 @@
     "ICSA": {
       "id": "ICSA",
       "label": "初请失业金人数",
-      "value": 208000,
-      "change": -8000,
-      "date": "2026-07-11",
+      "value": 187000,
+      "change": -22000,
+      "date": "2026-07-18",
       "prevDate": null,
       "chapter": 1
     },
@@ -175,9 +175,9 @@
     "T10Y3M": {
       "id": "T10Y3M",
       "label": "10年-3月利差",
-      "value": 0.78,
-      "change": 0.02,
-      "date": "2026-07-22",
+      "value": 0.76,
+      "change": -0.02,
+      "date": "2026-07-23",
       "prevDate": null,
       "chapter": 1
     },
