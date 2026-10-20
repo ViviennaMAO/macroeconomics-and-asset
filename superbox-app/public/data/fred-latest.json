@@ -1,30 +1,30 @@
 {
-  "fetchedAt": "2026-10-19T13:45:51.509Z",
+  "fetchedAt": "2026-10-20T11:55:22.735Z",
   "series": {
     "DFF": {
       "id": "DFF",
       "label": "Fed基准利率",
       "value": 3.88,
       "change": 0,
-      "date": "2026-10-15",
+      "date": "2026-10-16",
       "prevDate": null,
       "chapter": 11
     },
     "DGS2": {
       "id": "DGS2",
       "label": "2年期国债收益率",
-      "value": 4.77,
-      "change": -0.05,
-      "date": "2026-10-15",
+      "value": 4.74,
+      "change": -0.03,
+      "date": "2026-10-16",
       "prevDate": null,
       "chapter": 7
     },
     "DGS10": {
       "id": "DGS10",
       "label": "10年期国债收益率",
-      "value": 5.1,
-      "change": -0.09,
-      "date": "2026-10-15",
+      "value": 5.09,
+      "change": -0.01,
+      "date": "2026-10-16",
       "prevDate": null,
       "chapter": 7
     },
@@ -32,17 +32,17 @@
       "id": "DGS30",
       "label": "30年期国债收益率",
       "value": 5.43,
-      "change": -0.09,
-      "date": "2026-10-15",
+      "change": 0,
+      "date": "2026-10-16",
       "prevDate": null,
       "chapter": 7
     },
     "T10Y2Y": {
       "id": "T10Y2Y",
       "label": "2s10s利差",
-      "value": 0.35,
-      "change": 0.02,
-      "date": "2026-10-16",
+      "value": 0.38,
+      "change": 0.03,
+      "date": "2026-10-19",
       "prevDate": null,
       "chapter": 7
     },
@@ -77,8 +77,8 @@
       "id": "T10YIE",
       "label": "10年盈亏平衡通胀",
       "value": 2.35,
-      "change": 0.03,
-      "date": "2026-10-16",
+      "change": 0,
+      "date": "2026-10-19",
       "prevDate": null,
       "chapter": 10
     },
@@ -130,7 +130,7 @@
     "_spread2s10s": {
       "id": "_spread2s10s",
       "label": "2s10s利差(bps)",
-      "value": 33,
+      "value": 35,
       "change": null,
       "date": "2026-05-29",
       "prevDate": null,
@@ -139,9 +139,9 @@
     "_realRate10y": {
       "id": "_realRate10y",
       "label": "10年实际利率",
-      "value": 2.78,
+      "value": 2.74,
       "change": null,
-      "date": "2026-10-15",
+      "date": "2026-10-16",
       "prevDate": null,
       "chapter": 10
     },
@@ -175,9 +175,9 @@
     "T10Y3M": {
       "id": "T10Y3M",
       "label": "10年-3月利差",
-      "value": 0.83,
-      "change": 0.01,
-      "date": "2026-10-16",
+      "value": 0.88,
+      "change": 0.05,
+      "date": "2026-10-19",
       "prevDate": null,
       "chapter": 1
     },
