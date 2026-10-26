@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-25T11:52:56.689Z",
+  "fetchedAt": "2026-10-26T13:24:23.708Z",
   "series": {
     "DFF": {
       "id": "DFF",
@@ -49,9 +49,9 @@
     "SOFR": {
       "id": "SOFR",
       "label": "SOFR隔夜利率",
-      "value": 3.9,
+      "value": 3.92,
       "change": 0.02,
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "prevDate": null,
       "chapter": 11
     },
